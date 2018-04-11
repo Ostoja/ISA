@@ -1,5 +1,7 @@
 package com.isa.ISA.model;
 
+import java.util.ArrayList;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,12 @@ public class Sala {
 	private int brojRedova;
 	
 	private int brojKolona;
+	
+	@ManyToOne
+	private PozoristeBioskop pozoristeBioskop;
+	
+	@OneToMany
+	private ArrayList<SegmentUSali> segmenti;
 	
 	public Sala() {
 		
@@ -48,6 +56,22 @@ public class Sala {
 
 	public void setBrojKolona(int brojKolona) {
 		this.brojKolona = brojKolona;
+	}
+
+	public PozoristeBioskop getPozoristeBioskop() {
+		return pozoristeBioskop;
+	}
+
+	public void setPozoristeBioskop(PozoristeBioskop pozoristeBioskop) {
+		this.pozoristeBioskop = pozoristeBioskop;
+	}
+
+	public ArrayList<SegmentUSali> getSegmenti() {
+		return segmenti;
+	}
+
+	public void setSegmenti(ArrayList<SegmentUSali> segmenti) {
+		this.segmenti = segmenti;
 	}
 	
 	

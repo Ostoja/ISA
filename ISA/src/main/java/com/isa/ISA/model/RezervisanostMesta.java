@@ -10,6 +10,12 @@ public class RezervisanostMesta {
 	
 	private boolean zauzeto;
 	
+	@ManyToOne
+    private Projekcija projekcija;
+    
+    @ManyToOne
+    private Mesto mesto;
+	
 	public RezervisanostMesta() {
 		
 	}

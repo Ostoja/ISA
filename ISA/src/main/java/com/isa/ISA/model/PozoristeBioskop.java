@@ -16,14 +16,31 @@ public class PozoristeBioskop {
 	
 	private String promotivniOpis;
 	
+	private String gmaps;
 	@Enumerated(EnumType.STRING)
 	private VrstaAmbijenta vrstaAmbijenta;
 	
 	@OneToMany
 	private ArrayList<Sala> sale;
 	
-	@OneToMany
-	private ArrayList<FilmPredstava> repertoar;
+	@OneToOne //pogledati jos jednom.
+	private Repertoar repertoar;
+	
+	private double prosecnaOcena;
+	
+	private int brojOcena;
+	
+	private int bronzeThreshold;
+	
+	private int silverThreshold;
+	
+	private int goldThreshold;
+	
+	private int bronzePopust;
+	
+	private int silverPopust;
+	
+	private int goldPopust;
 	
 	PozoristeBioskop() {
 		
@@ -77,12 +94,84 @@ public class PozoristeBioskop {
 		this.sale = sale;
 	}
 
-	public ArrayList<FilmPredstava> getRepertoar() {
+	public Repertoar getRepertoar() {
 		return repertoar;
 	}
 
-	public void setRepertoar(ArrayList<FilmPredstava> repertoar) {
+	public void setRepertoar(Repertoar repertoar) {
 		this.repertoar = repertoar;
+	}
+
+	public double getProsecnaOcena() {
+		return prosecnaOcena;
+	}
+
+	public void setProsecnaOcena(double prosecnaOcena) {
+		this.prosecnaOcena = prosecnaOcena;
+	}
+
+	public int getBrojOcena() {
+		return brojOcena;
+	}
+
+	public void setBrojOcena(int brojOcena) {
+		this.brojOcena = brojOcena;
+	}
+
+	public String getGmaps() {
+		return gmaps;
+	}
+
+	public void setGmaps(String gmaps) {
+		this.gmaps = gmaps;
+	}
+
+	public int getBronzeThreshold() {
+		return bronzeThreshold;
+	}
+
+	public void setBronzeThreshold(int bronzeThreshold) {
+		this.bronzeThreshold = bronzeThreshold;
+	}
+
+	public int getSilverThreshold() {
+		return silverThreshold;
+	}
+
+	public void setSilverThreshold(int silverThreshold) {
+		this.silverThreshold = silverThreshold;
+	}
+
+	public int getGoldThreshold() {
+		return goldThreshold;
+	}
+
+	public void setGoldThreshold(int goldThreshold) {
+		this.goldThreshold = goldThreshold;
+	}
+
+	public int getBronzePopust() {
+		return bronzePopust;
+	}
+
+	public void setBronzePopust(int bronzePopust) {
+		this.bronzePopust = bronzePopust;
+	}
+
+	public int getSilverPopust() {
+		return silverPopust;
+	}
+
+	public void setSilverPopust(int silverPopust) {
+		this.silverPopust = silverPopust;
+	}
+
+	public int getGoldPopust() {
+		return goldPopust;
+	}
+
+	public void setGoldPopust(int goldPopust) {
+		this.goldPopust = goldPopust;
 	}
 	
 	

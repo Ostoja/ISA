@@ -2,6 +2,7 @@ package com.isa.ISA.model;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Rekvizit {
 	@Id
@@ -17,6 +18,14 @@ public class Rekvizit {
 	private boolean jePolovan;
 	
 	private boolean jeOdobren;
+	
+	@ManyToOne
+    private Korisnik postavio;
+	
+	@OneToOne
+	private Licitacija licitacija;
+	
+	
 	
 	public Rekvizit() {
 		
@@ -68,6 +77,22 @@ public class Rekvizit {
 
 	public void setJeOdobren(boolean jeOdobren) {
 		this.jeOdobren = jeOdobren;
+	}
+
+	public Korisnik getPostavio() {
+		return postavio;
+	}
+
+	public void setPostavio(Korisnik postavio) {
+		this.postavio = postavio;
+	}
+
+	public Licitacija getLicitacija() {
+		return licitacija;
+	}
+
+	public void setLicitacija(Licitacija licitacija) {
+		this.licitacija = licitacija;
 	}
 	
 	

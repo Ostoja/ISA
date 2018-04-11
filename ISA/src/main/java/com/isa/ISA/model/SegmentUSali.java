@@ -1,6 +1,9 @@
 package com.isa.ISA.model;
 
+import java.util.List;
+
 import javax.persistence.*;
+
 
 @Entity
 public class SegmentUSali {
@@ -11,6 +14,12 @@ public class SegmentUSali {
 	private String naziv;
 	
 	private boolean jeZatvoreno;
+	
+	private TipSedista tipSedista;
+	
+	@OneToMany
+    private List<Mesto> mesta;
+
 	
 	public SegmentUSali() {
 		
@@ -38,6 +47,22 @@ public class SegmentUSali {
 
 	public void setJeZatvoreno(boolean jeZatvoreno) {
 		this.jeZatvoreno = jeZatvoreno;
+	}
+
+	public TipSedista getTipSedista() {
+		return tipSedista;
+	}
+
+	public void setTipSedista(TipSedista tipSedista) {
+		this.tipSedista = tipSedista;
+	}
+
+	public List<Mesto> getMesta() {
+		return mesta;
+	}
+
+	public void setMesta(List<Mesto> mesta) {
+		this.mesta = mesta;
 	}
 	
 	

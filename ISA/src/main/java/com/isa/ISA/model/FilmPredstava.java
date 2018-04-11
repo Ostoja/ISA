@@ -12,7 +12,7 @@ public class FilmPredstava {
 	
 	private String naziv;
 	
-	private ArrayList<String> spisakGlumaca; //treba promeniti..
+	private String spisakGlumaca;
 	
 	private String zanr;
 	
@@ -24,9 +24,17 @@ public class FilmPredstava {
 	
 	private double prosecnaOcena;
 	
+	private int brojOcena;
+	
 	private String opis;
 	
 	private int cena;
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	private ArrayList<Projekcija> projekcije;
+	
+	@ManyToOne
+	private Repertoar repertoar;
 	
 	public FilmPredstava() {
 		
@@ -48,11 +56,11 @@ public class FilmPredstava {
 		this.naziv = naziv;
 	}
 
-	public ArrayList<String> getSpisakGlumaca() {
+	public String getSpisakGlumaca() {
 		return spisakGlumaca;
 	}
 
-	public void setSpisakGlumaca(ArrayList<String> spisakGlumaca) {
+	public void setSpisakGlumaca(String spisakGlumaca) {
 		this.spisakGlumaca = spisakGlumaca;
 	}
 
@@ -110,6 +118,30 @@ public class FilmPredstava {
 
 	public void setCena(int cena) {
 		this.cena = cena;
+	}
+
+	public int getBrojOcena() {
+		return brojOcena;
+	}
+
+	public void setBrojOcena(int brojOcena) {
+		this.brojOcena = brojOcena;
+	}
+
+	public ArrayList<Projekcija> getProjekcije() {
+		return projekcije;
+	}
+
+	public void setProjekcije(ArrayList<Projekcija> projekcije) {
+		this.projekcije = projekcije;
+	}
+
+	public Repertoar getRepertoar() {
+		return repertoar;
+	}
+
+	public void setRepertoar(Repertoar repertoar) {
+		this.repertoar = repertoar;
 	}
 
 	

@@ -1,8 +1,10 @@
 package com.isa.ISA.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.*;
+
 
 @Entity
 public class Licitacija {
@@ -18,6 +20,13 @@ public class Licitacija {
 	
 	private boolean jeZatvorena;
 	
+	@OneToOne
+    private Rekvizit rekvizit;
+	
+	@OneToMany
+	private ArrayList<Ponuda> ponude;
+	
+
 	public Licitacija() {
 		
 	}
@@ -60,6 +69,22 @@ public class Licitacija {
 
 	public void setJeZatvorena(boolean jeZatvorena) {
 		this.jeZatvorena = jeZatvorena;
+	}
+
+	public Rekvizit getRekvizit() {
+		return rekvizit;
+	}
+
+	public void setRekvizit(Rekvizit rekvizit) {
+		this.rekvizit = rekvizit;
+	}
+
+	public ArrayList<Ponuda> getPonude() {
+		return ponude;
+	}
+
+	public void setPonude(ArrayList<Ponuda> ponude) {
+		this.ponude = ponude;
 	}
 	
 	
