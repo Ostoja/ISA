@@ -2,6 +2,7 @@ package com.isa.ISA.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -24,7 +25,7 @@ public class Licitacija {
     private Rekvizit rekvizit;
 	
 	@OneToMany
-	private ArrayList<Ponuda> ponude;
+	private List<Ponuda> ponude;
 	
 
 	public Licitacija() {
@@ -79,11 +80,11 @@ public class Licitacija {
 		this.rekvizit = rekvizit;
 	}
 
-	public ArrayList<Ponuda> getPonude() {
+	public List<Ponuda> getPonude() {
 		return ponude;
 	}
 
-	public void setPonude(ArrayList<Ponuda> ponude) {
+	public void setPonude(List<Ponuda> ponude) {
 		this.ponude = ponude;
 	}
 	

@@ -1,8 +1,11 @@
 package com.isa.ISA.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Sala {
@@ -16,11 +19,17 @@ public class Sala {
 	
 	private int brojKolona;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonBackReference
 	private PozoristeBioskop pozoristeBioskop;
 	
 	@OneToMany
-	private ArrayList<SegmentUSali> segmenti;
+	@JsonBackReference
+	private List<SegmentUSali> segmenti;
+	
+	@OneToMany
+	@JsonBackReference
+    private List<Mesto> mesta;
 	
 	public Sala() {
 		
@@ -66,12 +75,20 @@ public class Sala {
 		this.pozoristeBioskop = pozoristeBioskop;
 	}
 
-	public ArrayList<SegmentUSali> getSegmenti() {
+	public List<SegmentUSali> getSegmenti() {
 		return segmenti;
 	}
 
-	public void setSegmenti(ArrayList<SegmentUSali> segmenti) {
+	public void setSegmenti(List<SegmentUSali> segmenti) {
 		this.segmenti = segmenti;
+	}
+
+	public List<Mesto> getMesta() {
+		return mesta;
+	}
+
+	public void setMesta(List<Mesto> mesta) {
+		this.mesta = mesta;
 	}
 	
 	

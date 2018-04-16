@@ -3,17 +3,17 @@ package com.isa.ISA.model;
 import javax.persistence.*;
 
 @Entity
-public abstract class User {
+public class User {
 
 	@Id
     @GeneratedValue
     private long id;
 	
+	private String username;
+	
 	private String email;
 	
 	private String password;
-	
-	private String salt;
 	
 	private String ime;
 	
@@ -24,7 +24,7 @@ public abstract class User {
 	private String brojTelefona;
 	
 	@Enumerated(EnumType.STRING)
-	private TipKorisnika tipKorisnika;
+	private TipKorisnika tip;
 	
 	private Boolean jeAktivan;
 	
@@ -54,14 +54,6 @@ public abstract class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
 	}
 
 	public String getIme() {
@@ -96,12 +88,12 @@ public abstract class User {
 		this.brojTelefona = brojTelefona;
 	}
 
-	public TipKorisnika getTipKorisnika() {
-		return tipKorisnika;
+	public TipKorisnika getTip() {
+		return tip;
 	}
 
-	public void setTipKorisnika(TipKorisnika tipKorisnika) {
-		this.tipKorisnika = tipKorisnika;
+	public void setTip(TipKorisnika tip) {
+		this.tip = tip;
 	}
 
 	public Boolean getJeAktivan() {
@@ -110,6 +102,21 @@ public abstract class User {
 
 	public void setJeAktivan(Boolean jeAktivan) {
 		this.jeAktivan = jeAktivan;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", ime="
+				+ ime + ", prezime=" + prezime + ", grad=" + grad + ", brojTelefona=" + brojTelefona + ", tip=" + tip
+				+ ", jeAktivan=" + jeAktivan + "]";
 	}
 	
 	

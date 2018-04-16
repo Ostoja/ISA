@@ -11,6 +11,9 @@ public class Ponuda {
 	private int ponuda;
 	
 	@ManyToOne
+	private Licitacija licitacija;
+	
+	@ManyToOne
 	private Korisnik ponudio;
 	
 	private boolean prihvatio;
@@ -60,6 +63,14 @@ public class Ponuda {
 
 	public void setRekvizit(Rekvizit rekvizit) {
 		this.rekvizit = rekvizit;
+	}
+
+	public Licitacija getLicitacija() {
+		return licitacija;
+	}
+
+	public void setLicitacija(Licitacija licitacija) {
+		this.licitacija = licitacija;
 	}
 	
 	

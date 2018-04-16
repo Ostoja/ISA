@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Cinema Theater Website</title>
+    <link rel="icon" href="assets/images/logo1.png">
+
+</head>
+<body ng-app="app">
+
+	<script src="assets/js/angular.js"></script>
+     <div ng-controller="headerCtrl">
+       <ui-view></ui-view>
+        <button>Pozorista</button>
+        <button>Bioskopi</button>
+        <button ng-click="logInUser()" ng-hide="loggedIn">Prijava</button>
+        <button ng-hide="loggedIn">Registracija</button>
+        <button ng-click="fbLogoutUser()" ng-show="loggedIn">Odjava</button>
+    </div> 
+	<div>
+	
+	
+	
+	
+		<ui-view>
+		
+		</ui-view>	
+		
+		
+		
+		
+	</div>
+
+   <!--  <script src="mainScript.js"></script> -->
+    
+    <script src="assets/js/app.module.js"></script>
+    <script src="assets/js/app.route.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/angular-ui-router.js"></script>
+    <script src="assets/js/ng-resource.js"></script>   
+	<script src="assets/js/angular-cookies.js"></script>
+	<script src="assets/js/directive.js"></script>
+
+    <script src="login.js"></script>
+	
+
+</body>
+</html>

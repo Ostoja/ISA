@@ -1,43 +1,64 @@
 package com.isa.ISA.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class FilmPredstava {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
+	@Column
 	private String naziv;
-	
+
+	@Column
 	private String spisakGlumaca;
-	
+
+	@Column
 	private String zanr;
-	
+
+	@Column
 	private String reditelj;
-	
+
+	@Column
 	private int trajanje;
-	
-	private String poster; //??
-	
+
+	@Column
+	private String poster; // ??
+
+	@Column
 	private double prosecnaOcena;
-	
+
+	@Column
 	private int brojOcena;
-	
+
+	@Column
 	private String opis;
-	
+
+	@Column
 	private int cena;
-	
-	@OneToMany(fetch = FetchType.EAGER)
-	private ArrayList<Projekcija> projekcije;
-	
+
+	@OneToMany
+	@JsonBackReference
+	private List<Projekcija> projekcije;
+
 	@ManyToOne
+	@JsonBackReference
 	private Repertoar repertoar;
-	
+
+	private int nosiBodova;
+
+	@ManyToOne
+	@JsonBackReference
+	private PozoristeBioskop mestoOdrzavanja;
+
 	public FilmPredstava() {
-		
+
 	}
 
 	public long getId() {
@@ -128,11 +149,11 @@ public class FilmPredstava {
 		this.brojOcena = brojOcena;
 	}
 
-	public ArrayList<Projekcija> getProjekcije() {
+	public List<Projekcija> getProjekcije() {
 		return projekcije;
 	}
 
-	public void setProjekcije(ArrayList<Projekcija> projekcije) {
+	public void setProjekcije(List<Projekcija> projekcije) {
 		this.projekcije = projekcije;
 	}
 
@@ -144,7 +165,21 @@ public class FilmPredstava {
 		this.repertoar = repertoar;
 	}
 
-	
-	
+	public int getNosiBodova() {
+		return nosiBodova;
+	}
+
+	public void setNosiBodova(int nosiBodova) {
+		this.nosiBodova = nosiBodova;
+	}
+
+	public PozoristeBioskop getMestoOdrzavanja() {
+		return mestoOdrzavanja;
+	}
+
+	public void setMestoOdrzavanja(PozoristeBioskop mestoOdrzavanja) {
+		this.mestoOdrzavanja = mestoOdrzavanja;
+	}
+
 	
 }

@@ -2,6 +2,8 @@ package com.isa.ISA.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Mesto {
 	@Id
@@ -15,7 +17,12 @@ public class Mesto {
 	private TipSedista tipSedista;
 	
 	@ManyToOne
+	@JsonBackReference
 	private SegmentUSali segmentUSali;
+	
+	@ManyToOne
+	@JsonBackReference
+	private Sala sala;
 	
 	public Mesto() {
 		
@@ -59,6 +66,14 @@ public class Mesto {
 
 	public void setSegmentUSali(SegmentUSali segmentUSali) {
 		this.segmentUSali = segmentUSali;
+	}
+
+	public Sala getSala() {
+		return sala;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
 	}
 
 	

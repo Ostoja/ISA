@@ -1,8 +1,11 @@
 package com.isa.ISA.model;
 
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
@@ -15,14 +18,30 @@ public class Projekcija {
 	
 	private Date datum;
 	
+
+	private String termin;
+	
+	
+	public String getTermin() {
+		return termin;
+	}
+
+	public void setTermin(String termin) {
+		this.termin = termin;
+	}
+
 	private int cena;
 	
+	private String fname;
+	
+	private String sname;
 	@ManyToOne
+	@JsonBackReference
 	private FilmPredstava filmPredstava;
 	
 	@ManyToOne
+	@JsonBackReference
     private Sala sala;
-
 	
 	public Projekcija() {
 		
@@ -66,6 +85,7 @@ public class Projekcija {
 
 	public void setFilmPredstava(FilmPredstava filmPredstava) {
 		this.filmPredstava = filmPredstava;
+		this.fname = filmPredstava.getNaziv();
 	}
 
 	public Sala getSala() {
@@ -74,6 +94,23 @@ public class Projekcija {
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
+		this.sname = sala.getNaziv();
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
 	}
 	
 	
