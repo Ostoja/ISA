@@ -10,6 +10,8 @@ public class Mesto {
 	@GeneratedValue
 	private long id;
 	
+	private int broj;
+	
 	private int red;
 	
 	private int kolona;
@@ -66,6 +68,14 @@ public class Mesto {
 
 	public void setSegmentUSali(SegmentUSali segmentUSali) {
 		this.segmentUSali = segmentUSali;
+	}
+
+	public int getBroj() {
+		return broj;
+	}
+
+	public void setBroj(int broj) {
+		this.broj = broj;
 	}
 
 	/*public Sala getSala() {

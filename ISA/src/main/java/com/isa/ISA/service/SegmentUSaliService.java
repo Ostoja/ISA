@@ -74,14 +74,15 @@ public class SegmentUSaliService {
 		sus.setId(id);
 		susr.save(sus);
 		List<Mesto> mesta = new ArrayList<>();
-		for (int i = 0; i < s.getKolone(); i++) {
-			for (int j = 0; j < s.getRedovi(); j++) {
+		for (int i = 1; i <= s.getKolone(); i++) {
+			for (int j = 1; j <= s.getRedovi(); j++) {
 				Mesto mesto = new Mesto();
 				mesto.setKolona(i);
 				mesto.setRed(j);
 				mesto.setTipSedista(sus.getTipSedista());
 				mesta.add(mesto);
 				mesto.setSegmentUSali(sus);
+				mesto.setBroj(i*j);
 				mr.save(mesto);
 			}
 		}
