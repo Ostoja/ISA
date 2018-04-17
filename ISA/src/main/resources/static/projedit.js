@@ -1,5 +1,5 @@
 window.onload = function(){
-	//$("#izabraniModeraotri").empty();
+	$("#izabraniEvent").empty();
 	
 	/*
 	$.ajax({
@@ -27,17 +27,18 @@ window.onload = function(){
 			alert(errorThrown);
 		}
 	});
-	
+	*/
+
 	
 	$.ajax({
-		url:"rest/userService/returnModerators",
+		url:"/fp",
 		type:"GET",
 		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
 			if(data!=null){
 				$.each(data,function(index,value){
-					$("#odaberiModeratore").append("<option>"+value.username+"</option>");
+					$("#filmPredstava").append("<option>"+value.id+"</option>");
 					
 				});
 			}
@@ -45,8 +46,27 @@ window.onload = function(){
 			alert(errorThrown);
 		}
 		
-	});*/
+	});
+	
+	$.ajax({
+		url:"/sale",
+		type:"GET",
+		contentType:"application/json",
+		dataType:"json",
+		success:function(data){
+			if(data!=null){
+				$.each(data,function(index,value){
+					$("#sala").append("<option>"+value.id+"</option>");
+					
+				});
+			}
+		},error: function(jqxhr,textStatus,errorThrown){
+			alert(errorThrown);
+		}
+		
+	});
 }
+
 /*
 function checkAuthorize(){
 	$.ajax({
@@ -67,17 +87,27 @@ function checkAuthorize(){
 	});
 }
 */
-
-function getFormData($form){
-	var unordered_array = $form.serializeArray();
-	var ordered_array={};
+/*
+function getFormData(){
+	var niz=[];
+	var index=0;
 	
-	$.map(unordered_array,function(n,i){
-		ordered_array[n['name']]=n['value'];
+	$("#izabraniModeratori li").each(function(){
+		niz[index] = $(this).text();
+		index++;
+		
 	});
-	return ordered_array;
-}
 	
+	var data = JSON.stringify({
+		"naziv":$('#noviPodforum input[name=naziv]').val(),
+		"opis":$('#noviPodforum textarea[name=opis]').val(),
+		"pravila":$('#noviPodforum textarea[name=pravila]').val(),
+		"ikonica":$('#noviPodforum input[name=ikonica]').val(),
+		"moderatori":niz
+	});
+	return data;
+}
+*/	
 /*
 function logOutUser(){
 	$.ajax({
@@ -99,12 +129,23 @@ function logOutUser(){
 	
 }
 */
-function dodajFilm(){
-	$form = $("#noviEvent");
+function getFormData($form){
+	var unordered_array = $form.serializeArray();
+	var ordered_array={};
+	
+	$.map(unordered_array,function(n,i){
+		ordered_array[n['name']]=n['value'];
+	});
+	return ordered_array;
+}
+
+function dodajProjekciju(){
+	$form = $("#noviProj");
 	var data = getFormData($form);
 	var s = JSON.stringify(data);
+	console.log(s);
 	$.ajax({
-		url:"/fp",
+		url:"/pb/projekcijeedit",
 		type:"PUT",
 		data:s,
 		contentType:"application/json",
@@ -123,4 +164,6 @@ function dodajFilm(){
 	});
 	
 }
+
+
 

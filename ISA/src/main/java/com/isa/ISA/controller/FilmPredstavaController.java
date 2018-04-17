@@ -17,6 +17,7 @@ import com.isa.ISA.model.DTO.FilmPredstavaDTO;
 import com.isa.ISA.repository.FilmPredstavaRepository;
 import com.isa.ISA.repository.ProjekcijaRepository;
 import com.isa.ISA.service.FilmPredstavaService;
+import com.sun.jersey.server.impl.model.method.dispatch.HttpReqResDispatchProvider;
 
 @RestController
 public class FilmPredstavaController {
@@ -36,6 +37,13 @@ public class FilmPredstavaController {
 		return fps.getAllFilmPredstava();
 	}
 
+	@RequestMapping("/filmpred/{id}")
+	public String postavljanje(@PathVariable String id, HttpServletRequest request) {
+		Long idl = Long.parseLong(id);
+		request.getSession().setAttribute("film", fpr.findOne(idl));
+		return "Ok";
+	}
+	
 	@RequestMapping("/fpa")
 	public FilmPredstava getAllFilmPredstavaA(HttpServletRequest request) {
 		Projekcija p = (Projekcija) request.getSession().getAttribute("projekc");
@@ -72,9 +80,10 @@ public class FilmPredstavaController {
 		fps.addFilmPredstava(fp);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/fp/{id}")
-	public void updateFilmPredstava(@PathVariable Long id, @RequestBody FilmPredstava fp) {
-		fps.updateFilmPredstava(fp);
+	@RequestMapping(method = RequestMethod.PUT, value = "/fp")
+	public void updateFilmPredstava(@RequestBody FilmPredstavaDTO fp, HttpServletRequest request) {
+		Long id = ((FilmPredstava)request.getSession().getAttribute("film")).getId();
+		fps.updateFilmPredstava(fp, id);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/fp/{id}")

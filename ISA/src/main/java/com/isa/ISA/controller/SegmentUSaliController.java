@@ -51,7 +51,16 @@ public class SegmentUSaliController {
 	public SegmentUSali getSala(@PathVariable Long id) {
 		return suss.getOne(id);
 	}
-
+	
+	@RequestMapping("/segm/{id}")
+    private String getAllProjekcijaPB(@PathVariable String id, HttpServletRequest request){
+		System.out.println("SegmCont + " +id);
+		Long idl = Long.parseLong(id);
+		request.getSession().setAttribute("segment", susr.findOne(idl));
+		System.out.println("segmCont "+ susr.findOne(idl).getNaziv());
+        return "izabrao je salu" + idl;
+	}
+	
 	@RequestMapping("/tipoviSedista")
 	public List<TipSedista> tipoviSedista() {
 		List<TipSedista> tips = new ArrayList<>();
@@ -69,9 +78,17 @@ public class SegmentUSaliController {
 		suss.addSala(s);
 	}
 
+	@RequestMapping(method = RequestMethod.PUT, value = "/segment/add")
+	public void addSala2(@RequestBody SegmentUSaliDTO s, HttpServletRequest request) {
+		SegmentUSali pb = (SegmentUSali) request.getSession().getAttribute("segment");
+		s.setSala(susr.findOne(pb.getId()).getSala().getId());
+		System.out.println("SegCont + "+s.toString());
+		suss.addSala(s, pb.getId());
+	}
+	
 	@RequestMapping(method = RequestMethod.PUT, value = "/segment/edit/{id}")
 	public void editSala(@RequestBody SegmentUSali s, @PathVariable Long id) {
-		suss.editSala(s, id);
+		//suss.addSala(s, id);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/segment/delete/{pbId}/{id}")

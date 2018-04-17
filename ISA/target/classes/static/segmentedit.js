@@ -1,5 +1,4 @@
 window.onload = function(){
-	//$("#izabraniModeraotri").empty();
 	
 	/*
 	$.ajax({
@@ -27,17 +26,18 @@ window.onload = function(){
 			alert(errorThrown);
 		}
 	});
+	*/
 	
 	
 	$.ajax({
-		url:"rest/userService/returnModerators",
+		url:"/tipoviSedista",
 		type:"GET",
 		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
 			if(data!=null){
 				$.each(data,function(index,value){
-					$("#odaberiModeratore").append("<option>"+value.username+"</option>");
+					$("#tipSedista").append("<option>"+value+"</option>");
 					
 				});
 			}
@@ -45,28 +45,8 @@ window.onload = function(){
 			alert(errorThrown);
 		}
 		
-	});*/
-}
-/*
-function checkAuthorize(){
-	$.ajax({
-		url:"rest/userService/returnModerOrAdmin",
-		type:"GET",
-		contentType:"application/json",
-		dataType:"json",
-		success:function(data){
-			if(data==true){
-				top.location.href="noviPodforum.html";
-			}else{
-						top.location.href = "noviPodforum.html";
-						
-			}
-			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
-			}
 	});
 }
-*/
 
 function getFormData($form){
 	var unordered_array = $form.serializeArray();
@@ -77,34 +57,14 @@ function getFormData($form){
 	});
 	return ordered_array;
 }
-	
-/*
-function logOutUser(){
-	$.ajax({
-		async:"false",
-		url:"rest/userService/logout",
-		type:"GET",
-		success:function(data){
-			if(data==true){
-				top.location.href="login.html";
-			}else{
-				toastr["error"]("Failed to logout");
-				
-			}
-		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
-		}
-		
-	});
-	
-}
-*/
-function dodajFilm(){
-	$form = $("#noviEvent");
+
+function dodajSegment(){
+	$form = $("#noviSeg");
 	var data = getFormData($form);
 	var s = JSON.stringify(data);
+	console.log(s);
 	$.ajax({
-		url:"/fp",
+		url:"/segment/add",
 		type:"PUT",
 		data:s,
 		contentType:"application/json",
@@ -123,4 +83,3 @@ function dodajFilm(){
 	});
 	
 }
-

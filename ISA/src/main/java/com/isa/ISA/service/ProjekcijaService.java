@@ -1,5 +1,8 @@
 package com.isa.ISA.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -132,7 +135,13 @@ public class ProjekcijaService {
 	public Projekcija converter(ProjekcijaDTO pp) {
 		Projekcija p = new Projekcija();
 		p.setCena(pp.getCena());
-		p.setDatum(pp.getDatum());
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			p.setDatum(format.parse(pp.getDatum()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		p.setFilmPredstava(fpr.getOne(pp.getFilmPredstava()));
 		p.setTermin(pp.getTermin());
 		p.setSala(sr.findOne(pp.getSala()));

@@ -41,17 +41,17 @@ public class FilmPredstavaService {
 	}
 
 	private FilmPredstava converter(FilmPredstavaDTO d) {
-		FilmPredstava dog = new FilmPredstava();
-		dog.setTrajanje(d.getTrajanje());
-		dog.setZanr(d.getZanr());
-		dog.setReditelj(d.getReditelj());
-		dog.setOpis(d.getOpis());
-		dog.setNaziv(d.getNaziv());
-		dog.setSpisakGlumaca(d.getSpisakGlumaca());
-		dog.setNosiBodova(d.getNosiBodova());
-		dog.setProsecnaOcena(d.getProsecnaOcena());
-		dog.setBrojOcena(d.getBrojOcena());
-		return dog;
+		FilmPredstava fp = new FilmPredstava();
+		fp.setTrajanje(d.getTrajanje());
+		fp.setZanr(d.getZanr());
+		fp.setReditelj(d.getReditelj());
+		fp.setOpis(d.getOpis());
+		fp.setNaziv(d.getNaziv());
+		fp.setSpisakGlumaca(d.getSpisakGlumaca());
+		fp.setNosiBodova(d.getNosiBodova());
+		fp.setProsecnaOcena(d.getProsecnaOcena());
+		fp.setBrojOcena(d.getBrojOcena());
+		return fp;
 
 	}
 
@@ -98,5 +98,13 @@ public class FilmPredstavaService {
 		}
 		fpr.save(fp);
 		pbs.updateOcena(pozoristeBioskopId, ambijentOcena);
+	}
+
+	public void updateFilmPredstava(FilmPredstavaDTO fp, Long id) {
+		// TODO Auto-generated method stub
+		FilmPredstava fp1 = converter(fp);
+		fp1.setId(id);
+		if (check(fp1))
+			fpr.save(fp1);
 	}
 }

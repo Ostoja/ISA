@@ -89,4 +89,11 @@ public class SalaService {
 
 		sRepo.delete(id);
 	}
+
+	public void editSala(SalaDTO s, long id) {
+		// TODO Auto-generated method stub
+		Sala sala = converter(s);
+		sala.setId(id);
+		sala = sRepo.save(sala);
+	}
 }

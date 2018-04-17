@@ -56,7 +56,7 @@ function napraviRepertoar(index,repertoar){
 
 function edituj(id){
 	$.ajax({
-		url:"/editfp/"+id,
+		url:"/filmpred/"+id,
 		type:"GET",
 		success:function(data){
 			if(data!=null){

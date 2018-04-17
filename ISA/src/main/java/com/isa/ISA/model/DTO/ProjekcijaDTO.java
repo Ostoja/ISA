@@ -10,7 +10,7 @@ import com.isa.ISA.CustomerDateAndTimeDeserialize;
 
 
 public class ProjekcijaDTO {
-	private Date datum;
+	private String datum;
 	
 	private String termin;
 
@@ -20,11 +20,11 @@ public class ProjekcijaDTO {
 	
     private Long sala;
 
-	public Date getDatum() {
+	public String getDatum() {
 		return datum;
 	}
 
-	public void setDatum(Date datum) {
+	public void setDatum(String datum) {
 		this.datum = datum;
 	}
 

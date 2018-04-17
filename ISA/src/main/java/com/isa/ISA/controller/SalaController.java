@@ -81,6 +81,15 @@ public class SalaController {
 		s.setPozoristeBioskop(pb.getId());
 		sService.addSala(s);
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = "/sala/add")
+	public void editujSala(@RequestBody SalaDTO s, HttpServletRequest request) {
+		Sala pb = (Sala) request.getSession().getAttribute("sala");
+		long id = pb.getId();
+		PozoristeBioskop pb2 = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
+		s.setPozoristeBioskop(pb2.getId());
+		sService.editSala(s, id);
+	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/sala/edit/{id}")
 	public void editSala(@RequestBody Sala s, @PathVariable Long id) {

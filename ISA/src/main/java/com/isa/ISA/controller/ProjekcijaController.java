@@ -1,5 +1,8 @@
 package com.isa.ISA.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ import com.isa.ISA.model.PozoristeBioskop;
 import com.isa.ISA.model.Projekcija;
 import com.isa.ISA.model.Sala;
 import com.isa.ISA.model.DTO.ProjekcijaDTO;
+import com.isa.ISA.repository.FilmPredstavaRepository;
 import com.isa.ISA.repository.PozoristeBioskopRepository;
 import com.isa.ISA.repository.ProjekcijaRepository;
 import com.isa.ISA.repository.SalaRepository;
@@ -29,6 +33,12 @@ public class ProjekcijaController {
 	
 	@Autowired
 	private PozoristeBioskopRepository pbr;
+	
+	@Autowired
+	private ProjekcijaRepository pror;
+	
+	@Autowired
+	private FilmPredstavaRepository fpr;
 	
 	@Autowired
 	private SalaRepository sr;
@@ -74,6 +84,37 @@ public class ProjekcijaController {
 	@RequestMapping(method = RequestMethod.POST, value = "/pb/projekcije")
     public void addProjekcija(@RequestBody ProjekcijaDTO p){
         ps.addProjekcija(p);
+    }
+	
+	@RequestMapping("/projekcijaedit")
+	public ProjekcijaDTO editProjekcija(HttpServletRequest request){
+		Projekcija p = (Projekcija) request.getSession().getAttribute("projekc");
+		ProjekcijaDTO pp = new ProjekcijaDTO();
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+		pp.setCena(p.getCena());
+		pp.setDatum(DATE_FORMAT.format(p.getDatum()));
+		System.out.println("Proj cont datum: "+DATE_FORMAT.format(p.getDatum()));
+		pp.setTermin(p.getTermin());
+		pp.setFilmPredstava(p.getFilmPredstava().getId());
+		pp.setSala(p.getSala().getId());
+		return pp;
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = "/pb/projekcijeedit")
+    public void updateProjekcija2(@RequestBody ProjekcijaDTO pro, HttpServletRequest request){
+		Projekcija pr = pror.getOne(((Projekcija)request.getSession().getAttribute("projekc")).getId()); 
+        pr.setCena(pro.getCena());
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			pr.setDatum(format.parse(pro.getDatum()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		pr.setFilmPredstava(fpr.findOne(pro.getFilmPredstava()));
+		pr.setTermin(pro.getTermin());
+		pr.setSala(sr.findOne(pro.getSala()));
+		ps.updateProjekcija(pr);
     }
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/pb/{id}/projekcije/{id2}")

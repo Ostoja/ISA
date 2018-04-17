@@ -99,12 +99,12 @@ function logOutUser(){
 	
 }
 */
-function dodajFilm(){
-	$form = $("#noviEvent");
+function dodajHalu(){
+	$form = $("#noviHall");
 	var data = getFormData($form);
 	var s = JSON.stringify(data);
 	$.ajax({
-		url:"/fp",
+		url:"/sala/add",
 		type:"PUT",
 		data:s,
 		contentType:"application/json",
