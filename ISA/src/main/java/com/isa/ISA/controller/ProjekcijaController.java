@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.isa.ISA.model.PozoristeBioskop;
 import com.isa.ISA.model.Projekcija;
+import com.isa.ISA.model.Sala;
 import com.isa.ISA.model.DTO.ProjekcijaDTO;
 import com.isa.ISA.repository.PozoristeBioskopRepository;
 import com.isa.ISA.repository.ProjekcijaRepository;
+import com.isa.ISA.repository.SalaRepository;
 import com.isa.ISA.service.ProjekcijaService;
 
 @RestController
@@ -28,20 +30,25 @@ public class ProjekcijaController {
 	@Autowired
 	private PozoristeBioskopRepository pbr;
 	
+	@Autowired
+	private SalaRepository sr;
+	
 	@RequestMapping("/projekcije")
     private List<Projekcija> getAllProjekcija(HttpServletRequest request){
 		PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
 		System.out.println("Proj COnt, pb "+pb.getNaziv());
         List<Projekcija> allP = new ArrayList<>();
         ps.getAll().forEach(allP::add);
+        PozoristeBioskop pbio = pbr.getOne(pb.getId());
         System.out.println("Proj Cont allP "+allP.size());
-        List<Projekcija> temp = allP;
-        for(int i = 0; i<allP.size(); i++) {
-        	/*System.out.println("ProjCont projekcija: "+allP.get(i).getSala().getPozoristeBioskop().getNaziv());
-        	if(!allP.get(i).getSala().getPozoristeBioskop().equals(pb)) {
+        List<Projekcija> temp = pbio.getRepertoar();
+        /*for(int i = 0; i<allP.size(); i++) {
+        	Sala sala = sr.getOne((allP.get(i).getSala().getId()));
+        	//System.out.println("ProjCont projekcija: "+allP.get(i).getSala().getPozoristeBioskop().getNaziv());
+        	if(!sala.getPozoristeBioskop().equals(pb)) {
         		temp.remove(allP.get(i));
-        	}*/
-        }
+        	}
+        }*/
         return temp;
 	}
 

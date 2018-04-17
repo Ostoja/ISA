@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.isa.ISA.model.PozoristeBioskop;
 import com.isa.ISA.model.Projekcija;
 import com.isa.ISA.model.Sala;
+import com.isa.ISA.model.DTO.SalaDTO;
 import com.isa.ISA.repository.PozoristeBioskopRepository;
 import com.isa.ISA.repository.SalaRepository;
 
@@ -31,9 +32,18 @@ public class SalaService {
 		return sRepo.findOne(id);
 	}
 
-	public void addSala(Sala s) {
-		Sala sala = sRepo.save(s);
-		PozoristeBioskop pb = pbRepo.findOne(s.getPozoristeBioskop().getId());
+	public Sala converter(SalaDTO s) {
+		Sala sala = new Sala();
+		sala.setNaziv(s.getNaziv());
+		sala.setPozoristeBioskop(pbRepo.findOne(s.getPozoristeBioskop()));
+		return sala;
+		
+	}
+	
+	public void addSala(SalaDTO s) {
+		Sala sala = converter(s);
+		sala = sRepo.save(sala);
+		PozoristeBioskop pb = pbRepo.findOne(sala.getPozoristeBioskop().getId());
 		pb.getSale().add(sala);
 		pbRepo.save(pb);
 

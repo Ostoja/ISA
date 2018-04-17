@@ -1,5 +1,5 @@
 package com.isa.ISA.model;
 
 public enum TipSedista {
-Balkon, Vip, Obicno, Nepostojece
+Balkon, Vip, Obicno
 }

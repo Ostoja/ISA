@@ -20,10 +20,10 @@ public class Mesto {
 	@JsonBackReference
 	private SegmentUSali segmentUSali;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JsonBackReference
 	private Sala sala;
-	
+	*/
 	public Mesto() {
 		
 	}
@@ -68,13 +68,13 @@ public class Mesto {
 		this.segmentUSali = segmentUSali;
 	}
 
-	public Sala getSala() {
+	/*public Sala getSala() {
 		return sala;
 	}
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
-	}
+	}*/
 
 	
 	

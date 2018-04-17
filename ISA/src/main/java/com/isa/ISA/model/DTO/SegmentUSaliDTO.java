@@ -1,17 +1,13 @@
-package com.isa.ISA.model;
+package com.isa.ISA.model.DTO;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.isa.ISA.model.Mesto;
+import com.isa.ISA.model.TipSedista;
 
-
-@Entity
-public class SegmentUSali {
-	@Id
-	@GeneratedValue
-	private long id;
+public class SegmentUSaliDTO {
 	
 	private String naziv;
 	
@@ -19,29 +15,12 @@ public class SegmentUSali {
 	
 	private TipSedista tipSedista;
 	
+	private Long sala;
+	
 	private int redovi;
 	
 	private int kolone;
 	
-	@OneToMany
-    private List<Mesto> mesta;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonBackReference
-	private Sala sala;
-	
-	public SegmentUSali() {
-		
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public String getNaziv() {
 		return naziv;
 	}
@@ -66,22 +45,14 @@ public class SegmentUSali {
 		this.tipSedista = tipSedista;
 	}
 
-	public List<Mesto> getMesta() {
-		return mesta;
-	}
-
-	public void setMesta(List<Mesto> mesta) {
-		this.mesta = mesta;
-	}
-
-	public Sala getSala() {
+	public Long getSala() {
 		return sala;
 	}
 
-	public void setSala(Sala sala) {
+	public void setSala(Long sala) {
 		this.sala = sala;
 	}
-
+	
 	public int getRedovi() {
 		return redovi;
 	}
@@ -98,13 +69,15 @@ public class SegmentUSali {
 		this.kolone = kolone;
 	}
 
+	public SegmentUSaliDTO() {
+		
+	}
+
 	@Override
 	public String toString() {
-		return "SegmentUSali [id=" + id + ", naziv=" + naziv + ", jeZatvoreno=" + jeZatvoreno + ", tipSedista="
-				+ tipSedista + ", redovi=" + redovi + ", kolone=" + kolone + ", mesta=" + mesta + "]";
+		return "SegmentUSaliDTO [naziv=" + naziv + ", jeZatvoreno=" + jeZatvoreno + ", tipSedista=" + tipSedista
+				+ ", sala=" + sala + ", redovi=" + redovi + ", kolone=" + kolone + "]";
 	}
 	
 	
-	
-
 }

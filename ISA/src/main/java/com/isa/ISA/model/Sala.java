@@ -19,18 +19,17 @@ public class Sala {
 	
 	private int brojKolona;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonBackReference
+	@ManyToOne
 	private PozoristeBioskop pozoristeBioskop;
 	
 	@OneToMany
 	@JsonBackReference
 	private List<SegmentUSali> segmenti;
 	
-	@OneToMany
+	/*@OneToMany
 	@JsonBackReference
     private List<Mesto> mesta;
-	
+	*/
 	public Sala() {
 		
 	}
@@ -83,13 +82,13 @@ public class Sala {
 		this.segmenti = segmenti;
 	}
 
-	public List<Mesto> getMesta() {
+	/*public List<Mesto> getMesta() {
 		return mesta;
 	}
 
 	public void setMesta(List<Mesto> mesta) {
 		this.mesta = mesta;
-	}
+	}*/
 	
 	
 }
