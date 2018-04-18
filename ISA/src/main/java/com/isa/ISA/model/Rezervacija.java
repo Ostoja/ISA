@@ -12,6 +12,10 @@ public class Rezervacija {
 	
 	private boolean jePotvrdjena;
 	
+	private int ocenaAmbijenta;
+    
+	private int ocenaProjekcije;
+	
 	@OneToOne
 	private Karta karta;
 	
@@ -74,6 +78,22 @@ public class Rezervacija {
 
 	public void setKarta(Karta karta) {
 		this.karta = karta;
+	}
+
+	public int getOcenaAmbijenta() {
+		return ocenaAmbijenta;
+	}
+
+	public void setOcenaAmbijenta(int ocenaAmbijenta) {
+		this.ocenaAmbijenta = ocenaAmbijenta;
+	}
+
+	public int getOcenaProjekcije() {
+		return ocenaProjekcije;
+	}
+
+	public void setOcenaProjekcije(int ocenaProjekcije) {
+		this.ocenaProjekcije = ocenaProjekcije;
 	}
 	
 	

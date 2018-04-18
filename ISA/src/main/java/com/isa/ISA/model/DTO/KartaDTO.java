@@ -4,6 +4,7 @@ package com.isa.ISA.model.DTO;
 /**
  * prenosi mesto, segmentUsali, projekciju i popust*/
 public class KartaDTO {
+	private long id;
 	
 	private long mesto;
 
@@ -115,6 +116,14 @@ public class KartaDTO {
 
 	public void setSala(String sala) {
 		this.sala = sala;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	

@@ -36,7 +36,7 @@ public class KartaController {
 
 	@Autowired
 	private KartaRepository kr;
-	
+
 	@Autowired
 	private KartaService ks;
 
@@ -74,12 +74,13 @@ public class KartaController {
 		List<KartaDTO> tempDTO = new ArrayList<>();
 		for (int i = 0; i < temp.size(); i++) {
 			System.out.println("Kart Cont " + allP.get(i).getPozoristeBioskop().getNaziv());
-			if (allP.get(i).getPozoristeBioskop().getId()==pb.getId()) {
-				tempDTO.add(converter(temp.get(i)));
-				System.out.println("USAO KARTACONT + "+tempDTO.size());
-				System.out.println(tempDTO.get(0));
-			}
-			else {
+			if (allP.get(i).getPozoristeBioskop().getId() == pb.getId()) {
+				if (!allP.get(i).isIzvrsena()) {
+					tempDTO.add(converter(temp.get(i)));
+					System.out.println("USAO KARTACONT + " + tempDTO.size());
+					System.out.println(tempDTO.get(0));
+				}
+			} else {
 				System.out.println("Nije usao");
 				System.out.println();
 			}
@@ -98,7 +99,8 @@ public class KartaController {
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 		k.setVremeOdrzavanja(DATE_FORMAT.format(karta.getVremeOdrzavanja()));
 		k.setPunaCena(karta.getPunaCena());
-		return k; //bilo je return null, wow
+		k.setId(karta.getId());
+		return k; // bilo je return null, wow
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/pickmesto/{id}")
@@ -106,9 +108,9 @@ public class KartaController {
 		Long idl = Long.parseLong(id);
 		request.getSession().setAttribute("mesto", mr.findOne(idl));
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/pick")
-	public void addKarta2(@RequestBody KartaDTO ka,HttpServletRequest request) {
+	public void addKarta2(@RequestBody KartaDTO ka, HttpServletRequest request) {
 		PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
 		Mesto mesto = (Mesto) request.getSession().getAttribute("mesto");
 		KartaDTO p = new KartaDTO();
@@ -160,10 +162,10 @@ public class KartaController {
 		List<Mesto> lm = mr.findBySegmentUSali(sus);
 		List<Mesto> lmt = lm;
 		List<Karta> lk = kr.findAll();
-		for(int i = 0; i<lk.size(); i++) {
-			for(int j = 0; j<lm.size(); j++) {
-				if(lm.get(j).getId()==lk.get(i).getMesto().getId()) {
-					if(lk.get(i).getProjekcija().getId()==proj.getId()) {
+		for (int i = 0; i < lk.size(); i++) {
+			for (int j = 0; j < lm.size(); j++) {
+				if (lm.get(j).getId() == lk.get(i).getMesto().getId()) {
+					if (lk.get(i).getProjekcija().getId() == proj.getId()) {
 						lmt.remove(lm.get(j));
 					}
 				}

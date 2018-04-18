@@ -37,11 +37,6 @@ public class Karta {
     
     private int popust;
     
-    private int ocenaAmbijenta;
-    
-    
-    private int ocenaProjekcije;
-    
     private boolean izvrsena;
     
     public Karta(){}
@@ -101,7 +96,7 @@ public class Karta {
 	public void setPopust(int popust) {
 		this.popust = popust;
 	}
-
+/*
 	public int getOcenaAmbijenta() {
 		return ocenaAmbijenta;
 	}
@@ -117,7 +112,7 @@ public class Karta {
 	public void setOcenaProjekcije(int ocenaProjekcije) {
 		this.ocenaProjekcije = ocenaProjekcije;
 	}
-
+*/
 	public boolean isIzvrsena() {
 		return izvrsena;
 	}

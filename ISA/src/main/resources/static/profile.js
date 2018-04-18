@@ -44,27 +44,23 @@ window.onload = function(){
 	});
 	
 	
-	/*
 	$.ajax({
 		url:"/rezervacije",
 		type:"GET",
-		contentType:"applicaton/json",
+		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
 			if(data!=null){
-				$.each(data,function(index,tema){
-					izradiSnimljeneTeme(index,tema);
+				console.log(data);
+				$.each(data,function(index,repertoar){
+						napraviRepertoar(index,repertoar);
 				});
-			}else{
-				toastr["error"]("An error occurred while returning saved enitities");
-				
 			}
-			
-		},error:function(jqxhr,textStatus,errorThrown){
+		},error: function(jqxhr,textStatus,errorThrown){
 			alert(errorThrown);
+			console.log(data);
 		}
 	});
-	*/
 	
 	
 	$.ajax({
@@ -92,7 +88,20 @@ window.onload = function(){
 }
 
 
-
+function oceni(id){
+	$.ajax({
+		url:"/ocenjujem/"+id,
+		type:"POST",
+		success:function(data){
+			if(data!=null){
+				window.location.replace("ocena.html");
+			}
+		},error: function(jqxhr,textStatus,errorThrown){
+			alert(errorThrown);
+		}
+		
+	});
+}
 
 function logOutUser(){
 	$.ajax({
@@ -135,6 +144,15 @@ function izradiSnimljeneTeme(index,tema){
 	}
 }
 */
+
+function napraviRepertoar(index,repertoar){
+	var divRepertoar=$("#divSnimljeniEntiteti")
+	console.log(repertoar);
+	divRepertoar.append("<div class=\"panel-heading\" style=\"background-color:lightsteelblue\"  id=\"film\"><label style=\"font-weight:bold;font-size: 17px;margin-right:5px;\">Projection: </label><a style=\"color:white\" onclick=\"otvoriBioskop("+repertoar+")\">"+repertoar.fname+"</a><button style=\"float: right; margin-right:10px;\" onclick=\"oceni("+repertoar.id+")\"  class=\"btn btn-info\" float=\"right\" ><span class=\"glyphicon glyphicon-ok-sign\"></span> Rate!</button><button style=\"float: right; margin-right:10px;\" onclick=\"film("+repertoar.id+")\"  class=\"btn btn-danger\" float=\"right\" ><span class=\"glyphicon glyphicon-remove\"></span> Repertoire</button><button class=\"btn btn-success\" style=\"margin-right:10px; margin-left:10px;\" onclick=\"editProj("+repertoar.id+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-open\"></span> Edit</button><button style=\"margin-right:10px; \" class=\"btn btn-warning\" onclick=\"otpratiPodforum("+index+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-close\"></span> UNFOLLOW</button><button class=\"btn btn-info\"  onclick=\"napisiZalbu("+index+")\"><span class=\"glyphicon glyphicon-list-alt\"></span> Write complaint</button></div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"mesto\"><label style=\"font-weight:bold;margin-right:5px;\">Seat: </label>"+repertoar.broj +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Institution: </label>"+repertoar.pbname+"</div>");
+}
+
 function izradiKorisnika(korisnik){
 	$("#divKorisnickiPodaci").append("<table class=\"table table-bordered table-info\"><h2 style=\"font-weigth:bold\"><label style=\"font-weight:bold;color:#174AC1;margin-left:10px;\">"+korisnik.ime + " " + korisnik.prezime+"</label><br/>"+
 			"<tbody><tr><td style=\"color:#174AC1;\"><b>Username</b></td><td>"+korisnik.username+"</td></tr>"+

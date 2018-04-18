@@ -82,7 +82,7 @@ public class FilmPredstavaService {
 		return fpr.findByNaziv(s);
 	}
 
-	public void oceniFilmPredstava(int ambijentOcena, int projekcijaOcena, Long pozoristeBioskopId,
+	public void oceniFilmPredstava(int projekcijaOcena,
 			Long FilmPredstavaID) {
 		FilmPredstava fp = fpr.findOne(FilmPredstavaID);
 		int broj = fp.getBrojOcena();
@@ -97,7 +97,6 @@ public class FilmPredstavaService {
 			fp.setProsecnaOcena(nova);
 		}
 		fpr.save(fp);
-		pbs.updateOcena(pozoristeBioskopId, ambijentOcena);
 	}
 
 	public void updateFilmPredstava(FilmPredstavaDTO fp, Long id) {
