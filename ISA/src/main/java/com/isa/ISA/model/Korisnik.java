@@ -1,6 +1,7 @@
 package com.isa.ISA.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -14,7 +15,20 @@ public class Korisnik extends User {
 	
 	private int bodovi;
 	
+	@OneToMany
+	private List<Rezervacija> rezervacije;
+	
+	public List<Rezervacija> getRezervacije() {
+		return rezervacije;
+	}
+
+	public void setRezervacije(List<Rezervacija> rezervacije) {
+		this.rezervacije = rezervacije;
+	}
+
 	public Korisnik(){
 		super();
 	}
+
+	
 }

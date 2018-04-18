@@ -85,6 +85,7 @@ function logOutUser(){
 	});
 	
 }
+/*
 function editSegment(id){
 	$.ajax({
 		url:"/segm/"+id,
@@ -98,4 +99,4 @@ function editSegment(id){
 		}
 		
 	});
-}
+}*/

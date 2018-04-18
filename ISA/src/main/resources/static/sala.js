@@ -68,7 +68,7 @@ function segmenti(id){
 		type:"GET",
 		success:function(data){
 			if(data!=null){
-				window.location.replace("segment.html");
+				window.location.replace("segments.html"); //segment.html
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
 			alert(errorThrown);
@@ -97,7 +97,7 @@ function logOutUser(){
 	});
 	
 }
-
+/*
 function editujHalu(id){
 	$.ajax({
 		url:"/segsala/"+id,
@@ -111,4 +111,4 @@ function editujHalu(id){
 		}
 		
 	});
-}
+}*/

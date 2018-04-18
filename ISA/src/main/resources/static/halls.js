@@ -29,6 +29,7 @@ window.onload = function(){
 		dataType:"json",
 		success:function(data){
 			if(data==true){
+				$("#navigations").append("<li><a href=\"halladd.html\">Add a hall</a></li>");
 				$("#navigations").append("<li><a href = \"mainpage.html\">Admin page</a></li>");
 			}else{
 						
