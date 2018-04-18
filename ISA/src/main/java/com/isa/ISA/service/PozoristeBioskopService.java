@@ -34,6 +34,9 @@ public class PozoristeBioskopService {
         pbr.findAll().forEach(allPB::add);
         List<PozoristeBioskop> temp = allPB;
         Admin a = ar.findById(u.getId());
+        if(a.getTip()!=u.getTip()) {
+        	return null;
+        }
         if(a!=null) {
         	for(int i = 0; i<allPB.size(); i++) {
         		if(!allPB.get(i).getAdmini().contains(a)) {

@@ -1,26 +1,20 @@
 window.onload = function(){
 	//$("#izabraniModeraotri").empty();
 	
-	/*
 	$.ajax({
-		url:"rest/userService/returnRoleUser",
+		url:"/returnRoleUser",
 		type:"GET",
 		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
 			if(data==true){
-				$("#navigations").append("<li><a href = \"startPage.html\">Start page</a></li>");
-
+				$("#navigations").append("<li><a href = \"profile.html\">Profile</a></li>");
 				
-				$("#navigations").append("<li><a href=\"korisnickaStranica.html\">User page</a></li>");
-				$("#navigations").append("<li onclick=\"checkAuthorize()\" class=\"active\"><a href=\"noviPodforum.html\">Add new subforum</a></li>");
-				$("#navigations").append("<li><a href = \"posaljiPoruku.html\">Send message</a></li>");
-				
-				$("#navigations").append("<li><a href=\"primljeneZalbe.html\">Primljene zalbe</a></li>")
 				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"#\" onclick=\"logOutUser()\"><span class=\"glyphicon glyphicon-log-in\"></span> Logout</a></li>");
 			}else{
-				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"login.html\" ><span class=\"glyphicon glyphicon-log-in\"></span> Back to login page</a></li>");
+				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"login.html\" ><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>");
 				
+				toastr["info"]("You entered as a guest");
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
@@ -28,24 +22,21 @@ window.onload = function(){
 		}
 	});
 	
-	
 	$.ajax({
-		url:"rest/userService/returnModerators",
+		url:"returnAdmin",
 		type:"GET",
 		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
-			if(data!=null){
-				$.each(data,function(index,value){
-					$("#odaberiModeratore").append("<option>"+value.username+"</option>");
-					
-				});
+			if(data==true){
+				$("#navigations").append("<li><a href = \"mainpage.html\">Admin page</a></li>");
+			}else{
+						
 			}
-		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
-		}
-		
-	});*/
+			},error:function(jqxhr,textStatus,errorThrown){
+				alert(errorThrown);
+			}
+	});
 }
 /*
 function checkAuthorize(){
@@ -78,11 +69,11 @@ function getFormData($form){
 	return ordered_array;
 }
 	
-/*
+
 function logOutUser(){
 	$.ajax({
 		async:"false",
-		url:"rest/userService/logout",
+		url:"/logout",
 		type:"GET",
 		success:function(data){
 			if(data==true){
@@ -98,7 +89,6 @@ function logOutUser(){
 	});
 	
 }
-*/
 function dodajFilm(){
 	$form = $("#noviEvent");
 	var data = getFormData($form);

@@ -1,29 +1,40 @@
 window.onload = function(){
-	/*$.ajax({
-		url:"rest/userService/returnRoleUser",
+	$.ajax({
+		url:"/returnRoleUser",
 		type:"GET",
 		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
 			if(data==true){
-				$("#navigations").append("<li><a href = \"startPage.html\">Start page</a></li>");
-
-				$("#navigations").append("<li><a href=\"korisnickaStranica.html\">User page</a></li>");
-				$("#navigations").append("<li onclick=\"checkAuthorize()\"><a href=\"noviPodforum.html\">Add new subforum</a></li>");
-				$("#navigations").append("<li><a href = \"posaljiPoruku.html\">Send message</a></li>");
+				$("#navigations").append("<li><a href = \"profile.html\">Profile</a></li>");
 				
-				$("#navigations").append("<li><a href=\"primljeneZalbe.html\">Primljene zalbe</a></li>")
 				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"#\" onclick=\"logOutUser()\"><span class=\"glyphicon glyphicon-log-in\"></span> Logout</a></li>");
 			}else{
-				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"login.html\" ><span class=\"glyphicon glyphicon-log-in\"></span> Back to login page</a></li>");
+				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"login.html\" ><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>");
 				
+				toastr["info"]("You entered as a guest");
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
 			alert(errorThrown);
 		}
 	});
-	*/
+	
+	$.ajax({
+		url:"returnAdmin",
+		type:"GET",
+		contentType:"application/json",
+		dataType:"json",
+		success:function(data){
+			if(data==true){
+				$("#navigations").append("<li><a href = \"mainpage.html\">Admin page</a></li>");
+			}else{
+						
+			}
+			},error:function(jqxhr,textStatus,errorThrown){
+				alert(errorThrown);
+			}
+	});
 	$.ajax({
 		url:"/projekcije",
 		type:"GET",

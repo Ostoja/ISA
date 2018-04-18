@@ -22,15 +22,8 @@ public class RegisterController {
 	public RegisterController() {
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/api/register/admin")
-	public void registerAdmin(@RequestBody User admin) {
-		Admin a = as.getAdmin(admin.getUsername());
-		a.setPassword(admin.getPassword());
-		a.setJeAktivan(false);
-		as.addAdmin(a);
-	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/api/register")
+	@RequestMapping(method = RequestMethod.POST, value = "/register")
 	public String registerR(@RequestBody User kor) {
 		System.out.println("AAAAAAA");
 		System.out.println("AA "+kor.toString());

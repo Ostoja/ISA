@@ -1,22 +1,18 @@
 window.onload = function(){
 	var isprazniBioskope=$("#bioskopi").empty();
-	/*
+	console.log("AA");
 	$.ajax({
-		url:"rest/userService/returnRoleUser",
+		url:"/returnRoleUser",
 		type:"GET",
 		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
 			if(data==true){
-				$("#navigations").append("<li><a href = \"startPage.html\">Start page</a></li>");
-				$("#navigations").append("<li><a href=\"korisnickaStranica.html\">User page</a></li>");
-				$("#navigations").append("<li onclick=\"checkAuthorize()\"><a href=\"noviPodforum.html\">Add new subforum</a></li>");
-				$("#navigations").append("<li><a href = \"posaljiPoruku.html\">Send message</a></li>");
+				$("#navigations").append("<li><a href = \"profile.html\">Profile</a></li>");
 				
-				$("#navigations").append("<li><a href=\"primljeneZalbe.html\">Received complaints</a></li>")
 				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"#\" onclick=\"logOutUser()\"><span class=\"glyphicon glyphicon-log-in\"></span> Logout</a></li>");
 			}else{
-				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"login.html\" ><span class=\"glyphicon glyphicon-log-in\"></span> Back to login page</a></li>");
+				$("#logout").append("<li  style=\"margin-right:20px;\"><a href=\"login.html\" ><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>");
 				
 				toastr["info"]("You entered as a guest");
 				
@@ -25,7 +21,22 @@ window.onload = function(){
 			alert(errorThrown);
 		}
 	});
-	*/
+	
+	$.ajax({
+		url:"returnAdmin",
+		type:"GET",
+		contentType:"application/json",
+		dataType:"json",
+		success:function(data){
+			if(data==true){
+				$("#navigations").append("<li><a href = \"mainpage.html\">Admin page</a></li>");
+			}else{
+						
+			}
+			},error:function(jqxhr,textStatus,errorThrown){
+				alert(errorThrown);
+			}
+	});
 	$.ajax({
 		url:"/pba",
 		type:"GET",
@@ -33,6 +44,7 @@ window.onload = function(){
 		dataType:"json",
 		success:function(data){
 			if(data!=null){
+				alert(data);
 				$.each(data,function(index,pbioskop){
 						napraviPBioskop(index,pbioskop);
 				});
@@ -82,6 +94,27 @@ function karta(id){
 		}
 		
 	});
+}
+
+
+function logOutUser(){
+	$.ajax({
+		async:"false",
+		url:"/logout",
+		type:"GET",
+		success:function(data){
+			if(data==true){
+				top.location.href="login.html";
+			}else{
+				toastr["error"]("Failed to logout");
+				
+			}
+		},error: function(jqxhr,textStatus,errorThrown){
+			alert(errorThrown);
+		}
+		
+	});
+	
 }
 
 function otvoriSale(id){

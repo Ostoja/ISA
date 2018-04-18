@@ -90,7 +90,7 @@ function registerUser(){
 	    	var data = getFormData($form);
 	    	var s = JSON.stringify(data);
 	    	$.ajax({
-	    		url:"/api/register",
+	    		url:"/register",
 	    		type:"POST",
 	    		data:s,
 	    		contentType:"application/json",
@@ -142,7 +142,7 @@ function logInUser(){
 	});
 	
 }
-
+/*
 function logInGuest(){
 	$.ajax({
 		url:"rest/userService/logInGuest",
@@ -161,4 +161,4 @@ function logInGuest(){
 		}
 	});
 	
-}
+}*/
