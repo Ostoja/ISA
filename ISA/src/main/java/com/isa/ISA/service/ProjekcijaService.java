@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.isa.ISA.model.FilmPredstava;
+import com.isa.ISA.model.PozoristeBioskop;
 import com.isa.ISA.model.Projekcija;
 import com.isa.ISA.model.Sala;
 import com.isa.ISA.model.DTO.ProjekcijaDTO;
 import com.isa.ISA.repository.FilmPredstavaRepository;
+import com.isa.ISA.repository.PozoristeBioskopRepository;
 import com.isa.ISA.repository.ProjekcijaRepository;
 import com.isa.ISA.repository.SalaRepository;
 
@@ -23,9 +25,12 @@ public class ProjekcijaService {
 
 	@Autowired
 	private ProjekcijaRepository pr;
-
+	
 	@Autowired
-	FilmPredstavaRepository fpr;
+	private PozoristeBioskopRepository pbr;
+	
+	@Autowired
+	private FilmPredstavaRepository fpr;
 
 	@Autowired
 	private SalaRepository sr;
@@ -40,7 +45,13 @@ public class ProjekcijaService {
 		return pr.findOne(id);
 	}
 
-	public void deleteProjekcija(Long id) {
+	public void deleteProjekcija(Long id2, Long id) {
+		Projekcija p = pr.getOne(id);
+		PozoristeBioskop pbio = pbr.getOne(id2);
+		List<Projekcija> pom = pbio.getRepertoar();
+		pom.remove(p);
+		pbio.setRepertoar(pom);
+		pbr.save(pbio);
 		pr.delete(id);
 	}
 
@@ -107,12 +118,6 @@ public class ProjekcijaService {
 		return allP;
 	}
 
-	public void deleteProjekcijaByIds(List<Long> ids) {
-		for (Long id : ids) {
-			pr.delete(id);
-		}
-	}
-
 	public ArrayList<Long> getProjekcijeToBeDeleted(Long id) {
 		ArrayList<Long> ids = new ArrayList<>();
 		Sala s = sr.findOne(id);
@@ -123,14 +128,6 @@ public class ProjekcijaService {
 		return ids;
 	}
 
-	public void deleteProjekcijaByDogadjaj(Long id) {
-		FilmPredstava d = fpr.findOne(id);
-		List<Projekcija> projekcije = pr.findByFilmPredstava(d);
-		for (Projekcija p : projekcije) {
-			pr.delete(p);
-		}
-
-	}
 	
 	public Projekcija converter(ProjekcijaDTO pp) {
 		Projekcija p = new Projekcija();
@@ -147,6 +144,12 @@ public class ProjekcijaService {
 		p.setSala(sr.findOne(pp.getSala()));
 		return p;
 	}
+	
+	public void deleteProjekcijaByIds(List<Long> ids){
+        for(Long id:ids){
+            pr.delete(id);
+        }
+}
 	
 	public void addProjekcija(ProjekcijaDTO pp) {
 		// TODO Auto-generated method stub

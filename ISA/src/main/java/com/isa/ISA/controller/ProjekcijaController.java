@@ -133,9 +133,12 @@ public class ProjekcijaController {
         ps.updateProjekcija(pr);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/pb/{id}/projekcije/{id2}")
-    public void deleteProjekcija(@PathVariable Long id, @PathVariable Long id2 ){
-        ps.deleteProjekcija(id2);
+    @RequestMapping(method = RequestMethod.DELETE, value = "/pb/projekcije/{id}")
+    public void deleteProjekcija(@PathVariable Long id, HttpServletRequest request){
+    	System.out.println("AADDDDD"+id);
+    	PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
+    	long id2=pb.getId();
+        ps.deleteProjekcija(id2, id);
 
 }
 

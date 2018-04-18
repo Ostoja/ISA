@@ -28,7 +28,7 @@ public class PozoristeBioskop {
 	@JsonBackReference
 	private List<Sala> sale;
 
-	@OneToMany// pogledati jos jednom.
+	@OneToMany(cascade = CascadeType.REMOVE)// pogledati jos jednom.
 	@JsonBackReference
 	private List<Projekcija> repertoar;
 
