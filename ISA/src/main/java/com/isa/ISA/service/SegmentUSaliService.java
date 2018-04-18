@@ -50,12 +50,15 @@ public class SegmentUSaliService {
 		SegmentUSali sus = converter(s);
 		System.out.println("SegSer + "+sus.toString());
 		susr.save(sus);
+		int k =0;
 		List<Mesto> mesta = new ArrayList<>();
-		for (int i = 0; i < s.getKolone(); i++) {
-			for (int j = 0; j < s.getRedovi(); j++) {
+		for (int i = 1; i <= s.getKolone(); i++) {
+			for (int j = 1; j <= s.getRedovi(); j++) {
 				Mesto mesto = new Mesto();
+				k++;
 				mesto.setKolona(i);
 				mesto.setRed(j);
+				mesto.setBroj(k);
 				mesto.setTipSedista(sus.getTipSedista());
 				mesta.add(mesto);
 				mesto.setSegmentUSali(sus);
@@ -73,16 +76,18 @@ public class SegmentUSaliService {
 		SegmentUSali sus = converter(s);
 		sus.setId(id);
 		susr.save(sus);
+		int k = 0;
 		List<Mesto> mesta = new ArrayList<>();
 		for (int i = 1; i <= s.getKolone(); i++) {
 			for (int j = 1; j <= s.getRedovi(); j++) {
 				Mesto mesto = new Mesto();
 				mesto.setKolona(i);
+				k++;
 				mesto.setRed(j);
 				mesto.setTipSedista(sus.getTipSedista());
 				mesta.add(mesto);
 				mesto.setSegmentUSali(sus);
-				mesto.setBroj(i*j);
+				mesto.setBroj(k);
 				mr.save(mesto);
 			}
 		}

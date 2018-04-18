@@ -52,6 +52,10 @@ public class PozoristeBioskop {
 	@JsonBackReference
 	private List<Admin> admini;
 
+	@OneToMany
+	@JsonBackReference
+	private List<Karta> karte;
+	
 	public PozoristeBioskop() {
 
 	}
@@ -190,6 +194,14 @@ public class PozoristeBioskop {
 
 	public void setAdmini(List<Admin> admini) {
 		this.admini = admini;
+	}
+
+	public List<Karta> getKarte() {
+		return karte;
+	}
+
+	public void setKarte(List<Karta> karte) {
+		this.karte = karte;
 	}
 
 	

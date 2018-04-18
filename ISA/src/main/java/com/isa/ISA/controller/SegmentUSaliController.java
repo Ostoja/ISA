@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.isa.ISA.model.PozoristeBioskop;
+import com.isa.ISA.model.Projekcija;
 import com.isa.ISA.model.Sala;
 import com.isa.ISA.model.SegmentUSali;
 import com.isa.ISA.model.TipSedista;
 import com.isa.ISA.model.DTO.SalaDTO;
 import com.isa.ISA.model.DTO.SegmentUSaliDTO;
+import com.isa.ISA.repository.ProjekcijaRepository;
 import com.isa.ISA.repository.SegmentUSaliRepository;
 import com.isa.ISA.service.SegmentUSaliService;
 
@@ -27,6 +29,9 @@ public class SegmentUSaliController {
 	private SegmentUSaliService  suss;
 	@Autowired
 	private SegmentUSaliRepository susr;
+	
+	@Autowired
+	private ProjekcijaRepository pr;
 	
 	@RequestMapping("/segmenti")
 	public List<SegmentUSali> getAllPozoristeBioskop(HttpServletRequest request) {
@@ -47,6 +52,52 @@ public class SegmentUSaliController {
         }
         return temp;
 	}
+	
+	@RequestMapping("/segmenti2")
+	public List<SegmentUSali> getAllPozoristeBioskop2(HttpServletRequest request) {
+		Sala pb = (Sala) request.getSession().getAttribute("sala");
+		System.out.println("Seg COnt, pb "+pb.getNaziv());
+        List<SegmentUSali> allP = new ArrayList<>();
+        susr.findAll().forEach(allP::add);
+        System.out.println("SEg Cont allP "+allP.size());
+        List<SegmentUSali> temp = allP;
+        for(int i = 0; i<allP.size(); i++) {
+        	/*System.out.println("ProjCont projekcija: "+allP.get(i).getSala().getPozoristeBioskop().getNaziv());
+        	if(!allP.get(i).getSala().getPozoristeBioskop().equals(pb)) {
+        		temp.remove(allP.get(i));
+        	}*/
+        	if(allP.get(i).getSala().getId()!=pb.getId()) {
+        		temp.remove(allP.get(i));
+        	}
+        	if(allP.get(i).isJeZatvoreno()) {
+        		temp.remove(allP.get(i));
+        	}
+        }
+        return temp;
+	}
+	
+	@RequestMapping("/segmentipr/{id}")
+	public List<SegmentUSali> getAllPozoristeBioskop2(@PathVariable Long id, HttpServletRequest request) {
+		//Sala pb = (Sala) request.getSession().getAttribute("sala");
+		Projekcija p = pr.getOne(id);
+		Sala pb = p.getSala();
+		System.out.println("Seg COnt, pb "+pb.getNaziv());
+        List<SegmentUSali> allP = new ArrayList<>();
+        susr.findAll().forEach(allP::add);
+        System.out.println("SEg Cont allP "+allP.size());
+        List<SegmentUSali> temp = allP;
+        for(int i = 0; i<allP.size(); i++) {
+        	/*System.out.println("ProjCont projekcija: "+allP.get(i).getSala().getPozoristeBioskop().getNaziv());
+        	if(!allP.get(i).getSala().getPozoristeBioskop().equals(pb)) {
+        		temp.remove(allP.get(i));
+        	}*/
+        	if(allP.get(i).getSala().getId()!=pb.getId()) {
+        		temp.remove(allP.get(i));
+        	}
+        }
+        return temp;
+	}
+	
 	@RequestMapping("/segment/{id}")
 	public SegmentUSali getSala(@PathVariable Long id) {
 		return suss.getOne(id);

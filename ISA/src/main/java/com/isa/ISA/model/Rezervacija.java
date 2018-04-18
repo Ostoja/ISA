@@ -12,6 +12,9 @@ public class Rezervacija {
 	
 	private boolean jePotvrdjena;
 	
+	@OneToOne
+	private Karta karta;
+	
     @ManyToOne
     private Korisnik rezervisao;
 
@@ -63,6 +66,14 @@ public class Rezervacija {
 
 	public void setMesto(Mesto mesto) {
 		this.mesto = mesto;
+	}
+
+	public Karta getKarta() {
+		return karta;
+	}
+
+	public void setKarta(Karta karta) {
+		this.karta = karta;
 	}
 	
 	

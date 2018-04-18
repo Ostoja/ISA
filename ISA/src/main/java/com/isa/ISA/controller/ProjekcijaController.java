@@ -62,6 +62,17 @@ public class ProjekcijaController {
         return temp;
 	}
 
+	@RequestMapping("/filmsala/{id}")
+    private String getAllProjekcijaPB2(@PathVariable String id, HttpServletRequest request){
+		System.out.println("FPCont + " +id);
+		Long idl = Long.parseLong(id);
+		Projekcija p = pror.findOne(idl);
+		request.getSession().setAttribute("sala", p.getSala());
+		request.getSession().setAttribute("projekc", pror.findOne(idl));
+		System.out.println("FPCont "+ pror.findOne(idl).getFname());
+        return "izabrao je projekciju" + idl;
+	}
+	
 	@RequestMapping("/projekcije/{id}")
     private String getAllProjekcijaPB(@PathVariable String id, HttpServletRequest request){
 		System.out.println("ProjCont + " +id);
