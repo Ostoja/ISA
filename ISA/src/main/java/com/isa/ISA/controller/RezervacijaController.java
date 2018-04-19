@@ -30,6 +30,7 @@ import com.isa.ISA.repository.KorisnikRepository;
 import com.isa.ISA.repository.RezervacijaRepository;
 import com.isa.ISA.service.FilmPredstavaService;
 import com.isa.ISA.service.PozoristeBioskopService;
+import com.isa.ISA.service.RezervacijaService;
 
 @RestController
 public class RezervacijaController {
@@ -43,6 +44,9 @@ public class RezervacijaController {
 	private PozoristeBioskopService pbs;
 	@Autowired
 	private FilmPredstavaService fps;
+	
+	@Autowired
+	private RezervacijaService rService;
 	
 	@RequestMapping("/rezervacije")
 	private List<RezervacijaDTO> getAllRezervacija(HttpServletRequest request) {
@@ -131,5 +135,13 @@ public class RezervacijaController {
 		r.setProjekcija(k.getProjekcija().getId());
 		r.setJePotvrdjena(false);*/
 		
+	}
+	
+	 @RequestMapping(method = RequestMethod.DELETE, value = "/rezervacijadelete/{id}")
+	    public void deleteSala(@PathVariable Long id, HttpServletRequest request){
+	    	System.out.println("Deleting rezervacija "+id);
+	    	
+	        rService.deleteSala(id);
+
 	}
 }

@@ -98,6 +98,17 @@ public class SegmentUSaliService {
 
 	public void deleteSala(Long id) {
 		// TODO Auto-generated method stub
+		List<Mesto> mesta = new ArrayList<>();
+		mr.findBySegmentUSali(susr.getOne(id)).forEach(mesta::add);;
+		SegmentUSali s = susr.getOne(id);
+		s.setMesta(null);
+		susr.save(s);
+		int k = mesta.size();
+		for(int i = k-1; i>=0; i--) {
+			mr.delete(mesta.get(i).getId());
+		}
+		
+		susr.delete(id);
 		
 	}
 

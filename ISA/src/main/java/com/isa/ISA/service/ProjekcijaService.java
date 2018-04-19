@@ -142,6 +142,20 @@ public class ProjekcijaService {
 		p.setFilmPredstava(fpr.getOne(pp.getFilmPredstava()));
 		p.setTermin(pp.getTermin());
 		p.setSala(sr.findOne(pp.getSala()));
+		List<PozoristeBioskop> lpb = new ArrayList<>();
+		pbr.findAll().forEach(lpb::add);
+		PozoristeBioskop pb = null;
+		for(int j=0; j<lpb.size(); j++) {
+			if(lpb.get(j).getSale().contains(sr.findOne(pp.getSala()))) {
+				pb = lpb.get(j);
+				break;
+			}
+		}
+		List<Projekcija> lp = pb.getRepertoar();
+		lp.add(p);
+		pr.save(p);
+		pb.setRepertoar(lp);
+		pbr.save(pb);
 		return p;
 	}
 	
@@ -157,7 +171,7 @@ public class ProjekcijaService {
 		int a = 2;
 		a++;
 		System.out.println(a);
-		addProjekcija(p);
+		//addProjekcija(p);
 	}
 	
 }

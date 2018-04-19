@@ -173,4 +173,12 @@ public class KartaController {
 		}
 		return lmt;
 	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/kartadelete/{id}")
+    public void deleteSala(@PathVariable Long id, HttpServletRequest request){
+    	System.out.println("Deleting karta "+id);
+    	
+        ks.deleteKarta(id);
+
+}
 }

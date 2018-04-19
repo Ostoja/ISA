@@ -142,10 +142,12 @@ public class SegmentUSaliController {
 		//suss.addSala(s, id);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/segment/delete/{pbId}/{id}")
-	public void deleteSala(@PathVariable Long pbId, @PathVariable Long id) {
-		//ArrayList<Long> ids = ps.getProjekcijeToBeDeleted(id);
-		suss.deleteSala(id);
+	 @RequestMapping(method = RequestMethod.DELETE, value = "/segment/{id}")
+	    public void deleteSala(@PathVariable Long id, HttpServletRequest request){
+	    	System.out.println("Deleting segment "+id);
+	    	
+	        suss.deleteSala(id);
 
 	}
+
 }

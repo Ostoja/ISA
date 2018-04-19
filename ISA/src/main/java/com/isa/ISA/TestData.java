@@ -71,7 +71,7 @@ public class TestData {
         a.setIme("Adam");
         a.setPrezime("Adamovic");
         a.setGrad("Aleksinac");
-        a.setJeAktivan(false);
+        a.setJeAktivan(true);
         System.out.println("Kreiran korisnik: " + a.getUsername());
         adminService.addAdmin(a);
         

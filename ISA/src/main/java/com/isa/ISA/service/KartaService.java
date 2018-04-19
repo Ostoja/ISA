@@ -70,4 +70,9 @@ public class KartaService {
 		System.out.println("A");
 		kRepo.save(p);
 	}
+
+	public void deleteKarta(Long id) {
+		kRepo.delete(id);
+		
+	}
 }

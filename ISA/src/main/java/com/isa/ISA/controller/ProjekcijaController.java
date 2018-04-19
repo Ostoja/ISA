@@ -82,10 +82,6 @@ public class ProjekcijaController {
         return "izabrao je projekciju" + idl;
 	}
 	
-	@RequestMapping("/pb/{id}/projekcije/{id}")
-	private Projekcija getProjekcija(@PathVariable Long id){
-		return ps.getProjekcija(id);
-	}
 	
 	/*@RequestMapping(method = RequestMethod.POST, value = "/pb/{id}/projekcije")
     public void addProjekcija(@RequestBody Projekcija p, @PathVariable Long id){
@@ -94,6 +90,8 @@ public class ProjekcijaController {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/pb/projekcije")
     public void addProjekcija(@RequestBody ProjekcijaDTO p){
+		//PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
+		//p.setPozoristeBioskop(pb.getId());
         ps.addProjekcija(p);
     }
 	

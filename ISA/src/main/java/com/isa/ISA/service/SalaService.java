@@ -9,16 +9,21 @@ import org.springframework.stereotype.Service;
 import com.isa.ISA.model.PozoristeBioskop;
 import com.isa.ISA.model.Projekcija;
 import com.isa.ISA.model.Sala;
+import com.isa.ISA.model.SegmentUSali;
 import com.isa.ISA.model.DTO.SalaDTO;
 import com.isa.ISA.repository.PozoristeBioskopRepository;
 import com.isa.ISA.repository.SalaRepository;
+import com.isa.ISA.repository.SegmentUSaliRepository;
 
 @Service
 public class SalaService {
 
 	@Autowired
 	private SalaRepository sRepo;
-
+	@Autowired
+	private SegmentUSaliService susService;
+	@Autowired
+	private SegmentUSaliRepository susRepo;
 	@Autowired
 	private PozoristeBioskopRepository pbRepo;
 
@@ -86,7 +91,15 @@ public class SalaService {
 		}
 
 		pbRepo.save(pb);
-
+		List<SegmentUSali> ss = new ArrayList<>();
+		Sala sa = sRepo.getOne(id);
+		sa.setSegmenti(null);
+		susRepo.findBySala(sa).forEach(ss::add);
+		int k = ss.size();
+		for(int j = k-1; j>=0; j--) {
+			susService.deleteSala(ss.get(j).getId());
+		}
+	
 		sRepo.delete(id);
 	}
 

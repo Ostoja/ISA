@@ -96,8 +96,10 @@ public class SalaController {
 		sService.editSala(s, id);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/sala/delete/{pbId}/{id}")
-	public void deleteSala(@PathVariable Long pbId, @PathVariable Long id) {
+	@RequestMapping(method = RequestMethod.DELETE, value = "/saladelete/{id}")
+	public void deleteSala(@PathVariable Long id, HttpServletRequest request) {
+		PozoristeBioskop pb = (PozoristeBioskop)request.getSession().getAttribute("pozbio");
+		long pbId = pb.getId();
 		ArrayList<Long> ids = ps.getProjekcijeToBeDeleted(id);
 		sService.deleteProjekcijeFromPB(ids, pbId);
 		ps.deleteProjekcijaByIds(ids);

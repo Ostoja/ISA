@@ -30,6 +30,7 @@ window.onload = function(){
 		success:function(data){
 			if(data==true){
 				$("#navigations").append("<li><a href = \"mainpage.html\">Admin page</a></li>");
+				$("#navigations").append("<li><a href = \"projadd.html\">add projection</a></li>");
 			}else{
 						
 			}

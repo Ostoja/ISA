@@ -58,12 +58,27 @@ window.onload = function(){
 function napraviRepertoar(index,repertoar){
 	var divRepertoar=$("#segment")
 	console.log(repertoar);
-	divRepertoar.append("<div class=\"panel-heading\" style=\"background-color:lightsteelblue\"  id=\"film\"><label style=\"font-weight:bold;font-size: 17px;margin-right:5px;\">Name of segment: </label><a style=\"color:white\" onclick=\"otvoriBioskop("+repertoar+")\">"+repertoar.naziv+"</a><button style=\"float: right; margin-right:10px;\" onclick=\"otvoriSale("+repertoar+")\"  class=\"btn btn-info\" float=\"right\" ><span class=\"glyphicon glyphicon-ok-sign\"></span> Halls</button><button style=\"float: right; margin-right:10px;\" onclick=\"segmenti("+repertoar.id+")\"  class=\"btn btn-danger\" float=\"right\" ><span class=\"glyphicon glyphicon-remove\"></span> Segmenti</button><button class=\"btn btn-success\" style=\"margin-right:10px; margin-left:10px;\" onclick=\"editSegment("+repertoar.id+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-open\"></span> Edit</button><button style=\"margin-right:10px; \" class=\"btn btn-warning\" onclick=\"otpratiPodforum("+index+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-close\"></span> UNFOLLOW</button><button class=\"btn btn-info\"  onclick=\"napisiZalbu("+index+")\"><span class=\"glyphicon glyphicon-list-alt\"></span> Write complaint</button></div>");
+	divRepertoar.append("<div class=\"panel-heading\" style=\"background-color:lightsteelblue\"  id=\"film\"><label style=\"font-weight:bold;font-size: 17px;margin-right:5px;\">Name of segment: </label><a style=\"color:white\" onclick=\"otvoriBioskop("+repertoar+")\">"+repertoar.naziv+"</a><button style=\"float: right; margin-right:10px;\" onclick=\"otvoriSale("+repertoar+")\"  class=\"btn btn-info\" float=\"right\" ><span class=\"glyphicon glyphicon-ok-sign\"></span> Halls</button><button style=\"float: right; margin-right:10px;\" onclick=\"segmenti("+repertoar.id+")\"  class=\"btn btn-danger\" float=\"right\" ><span class=\"glyphicon glyphicon-remove\"></span> Segmenti</button><button class=\"btn btn-success\" style=\"margin-right:10px; margin-left:10px;\" onclick=\"editSegment("+repertoar.id+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-open\"></span> Edit</button><button style=\"margin-right:10px; \" class=\"btn btn-warning\" onclick=\"deletuj("+repertoar.id+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-close\"></span> Delete</button><button class=\"btn btn-info\"  onclick=\"napisiZalbu("+index+")\"><span class=\"glyphicon glyphicon-list-alt\"></span> Write complaint</button></div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"zatvoreno\"><label style=\"font-weight:bold;margin-right:5px;\">Closed: </label>"+repertoar.jeZatvoreno +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"redovi\"><label style=\"font-weight:bold;margin-right:5px;\">Rows: </label>"+repertoar.redovi +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"kolone\"><label style=\"font-weight:bold;margin-right:5px;\">Columns: </label>"+repertoar.kolone +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"tip\"><label style=\"font-weight:bold;margin-right:5px;\">Type: </label>"+repertoar.tipSedista +"</div>");
 	
+}
+
+function deletuj(id){
+	$.ajax({
+		url:"/segment/"+id,
+		type:"DELETE",
+		success:function(data){
+			
+				window.location.replace("segment.html");
+			
+		},error: function(jqxhr,textStatus,errorThrown){
+			alert(errorThrown);
+		}
+		
+	});
 }
 
 function logOutUser(){

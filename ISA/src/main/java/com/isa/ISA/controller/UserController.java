@@ -69,34 +69,84 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/edituser")
-	private String editUser(@RequestBody User kor, HttpServletRequest request) {
-		System.out.println("AAAAAAA");
-		System.out.println("AA "+kor.toString());
+	private boolean editUser(@RequestBody User kor, HttpServletRequest request) {
+		System.out.println("RRRRRRR");
+		System.out.println("RRRR "+kor.toString());
+		
 		Korisnik reg = ks.getUser(kor.getUsername());
 		Admin adm = as.getAdmin(kor.getUsername());
+		User user = (User) request.getSession().getAttribute("loggedUser");
+		kor.setPassword(user.getPassword());
 		if (reg != null || adm != null) {
-
-			return "Username is already taken.";
+			if(reg!=null) {
+				if(reg.getId()!=user.getId()) {
+					return false;
+				}
+			}
+			else {
+				if(adm.getId()!=user.getId()) {
+					return false;
+				}
+			}
 		}
 		User korEmail = ks.findByEmail(kor.getEmail());
 		Admin adminEmail = as.getAdminByEmail(kor.getEmail());
 		if (korEmail != null || adminEmail != null) {
-
-			return "Email is already taken.";
+			if(korEmail!=null) {
+				if(korEmail.getId()!=user.getId()) {
+					return false;
+				}
+			}
+			else {
+				if(adminEmail.getId()!=user.getId()) {
+					return false;
+				}
+			}
 		}
-		Korisnik k = new Korisnik();
+		User k = new User();
+		k.setId(((User)request.getSession().getAttribute("loggedUser")).getId());
 		k.setUsername(kor.getUsername());
 		k.setPassword(kor.getPassword());
 		k.setEmail(kor.getEmail());
 		k.setJeAktivan(kor.getJeAktivan());
+		k.setTip(user.getTip());
 		k.setBrojTelefona(kor.getBrojTelefona());
 		k.setGrad(kor.getGrad());
 		k.setIme(kor.getIme());
 		k.setPrezime(kor.getPrezime());
-		ks.addUser(k);
+		if(k.getTip()==TipKorisnika.Obican) {
+			Korisnik aa = (Korisnik)k;
+			Korisnik ko = ks.getUser(((User)request.getSession().getAttribute("loggedUser")).getUsername());
+			aa.setRezervacije(ko.getRezervacije());
+			aa.setBrojTelefona(k.getBrojTelefona());
+			aa.setEmail(k.getEmail());
+			aa.setGrad(k.getGrad());
+			aa.setId(k.getId());
+			aa.setIme(k.getIme());
+			aa.setJeAktivan(k.getJeAktivan());
+			aa.setPassword(k.getPassword());
+			aa.setPrezime(k.getPrezime());
+			aa.setTip(k.getTip());
+			aa.setUsername(k.getUsername());
+			ks.addUser(aa);
+		}
+		else {
+			Admin aa = new Admin();
+			aa.setBrojTelefona(k.getBrojTelefona());
+			aa.setEmail(k.getEmail());
+			aa.setGrad(k.getGrad());
+			aa.setId(k.getId());
+			aa.setIme(k.getIme());
+			aa.setJeAktivan(k.getJeAktivan());
+			aa.setPassword(k.getPassword());
+			aa.setPrezime(k.getPrezime());
+			aa.setTip(k.getTip());
+			aa.setUsername(k.getUsername());
+			as.addAdmin(aa);
+		}
 		request.getSession().setAttribute("loggedUser", k);
 		//EmailService es = new EmailService(k.getEmail());
 		System.out.println("Account with username " + k.getUsername() + "has been edited");
-		return "";
+		return true;
 	}
 }
