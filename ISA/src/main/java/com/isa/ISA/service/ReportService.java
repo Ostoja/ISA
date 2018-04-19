@@ -15,10 +15,12 @@ import org.springframework.stereotype.Service;
 
 import com.isa.ISA.model.Karta;
 import com.isa.ISA.model.PozoristeBioskop;
+import com.isa.ISA.model.Rezervacija;
 import com.isa.ISA.model.DTO.ReportDTO;
 import com.isa.ISA.repository.FilmPredstavaRepository;
 import com.isa.ISA.repository.KartaRepository;
 import com.isa.ISA.repository.PozoristeBioskopRepository;
+import com.isa.ISA.repository.RezervacijaRepository;
 
 @Service
 public class ReportService {
@@ -28,6 +30,9 @@ public class ReportService {
 	@Autowired
 	private FilmPredstavaRepository fpr;
 
+	@Autowired
+	private RezervacijaRepository rezervacijaRepository;
+	
 	@Autowired
 	private KartaRepository kartaRepository;
 
@@ -46,6 +51,14 @@ public class ReportService {
 		List<Karta> allP = new ArrayList<>();
 		kartaRepository.findByPozoristeBioskopAndVremeOdrzavanjaBetween(pb, p, k).forEach(allP::add);
 		for (int i = 0; i < allP.size(); i++) {
+			Rezervacija r = rezervacijaRepository.findByKarta(allP.get(i)); 
+			//System.out.println("AAAAA "+r.getOcenaAmbijenta());
+			if(r==null) {
+				continue;
+			}
+			if(!r.isJePotvrdjena()) {
+				continue;
+			}
 			sum += (allP.get(i).getPunaCena() - allP.get(i).getPopust() * allP.get(i).getPunaCena() / 100);
 		}
 		return sum;
@@ -58,6 +71,14 @@ public class ReportService {
 		List<Karta> allP = new ArrayList<>();
 		kartaRepository.findByPozoristeBioskopAndVremeOdrzavanjaBefore(pb, p).forEach(allP::add);
 		for (int i = 0; i < allP.size(); i++) {
+			Rezervacija r = rezervacijaRepository.findByKarta(allP.get(i)); 
+			//System.out.println("AAAAA "+r.getOcenaAmbijenta());
+			if(r==null) {
+				continue;
+			}
+			if(!r.isJePotvrdjena()) {
+				continue;
+			}
 			sum += (allP.get(i).getPunaCena() - allP.get(i).getPopust() * allP.get(i).getPunaCena() / 100);
 		}
 		return sum;
@@ -70,6 +91,14 @@ public class ReportService {
 		List<Karta> allP = new ArrayList<>();
 		kartaRepository.findByPozoristeBioskopAndVremeOdrzavanjaAfter(pb, p).forEach(allP::add);
 		for (int i = 0; i < allP.size(); i++) {
+			Rezervacija r = rezervacijaRepository.findByKarta(allP.get(i)); 
+			//System.out.println("AAAAA "+r.getOcenaAmbijenta());
+			if(r==null) {
+				continue;
+			}
+			if(!r.isJePotvrdjena()) {
+				continue;
+			}
 			sum += (allP.get(i).getPunaCena() - allP.get(i).getPopust() * allP.get(i).getPunaCena() / 100);
 		}
 		return sum;
@@ -85,6 +114,14 @@ public class ReportService {
 			ReportDTO rdto = new ReportDTO();
 			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 			rdto.setDatum(DATE_FORMAT.format(karte.get(i).getProjekcija().getDatum()));
+			Rezervacija r = rezervacijaRepository.findByKarta(karte.get(i)); 
+			//System.out.println("AAAAA "+r.getOcenaAmbijenta());
+			if(r==null) {
+				continue;
+			}
+			if(!r.isJePotvrdjena()) {
+				continue;
+			}
 			if (ret.size() == 0) {
 				rdto.setPoseta(1);
 				ret.add(rdto);
@@ -113,6 +150,14 @@ public class ReportService {
 			ReportDTO rdto = new ReportDTO();
 			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 			rdto.setDatum(DATE_FORMAT.format(karte.get(i).getProjekcija().getDatum()));
+			Rezervacija r = rezervacijaRepository.findByKarta(karte.get(i)); 
+			//System.out.println("AAAAA "+r.getOcenaAmbijenta());
+			if(r==null) {
+				continue;
+			}
+			if(!r.isJePotvrdjena()) {
+				continue;
+			}
 			if (ret.size() == 0) {
 				rdto.setPoseta(1);
 				ret.add(rdto);
@@ -141,6 +186,14 @@ public class ReportService {
 			ReportDTO rdto = new ReportDTO();
 			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 			rdto.setDatum(DATE_FORMAT.format(karte.get(i).getProjekcija().getDatum()));
+			Rezervacija r = rezervacijaRepository.findByKarta(karte.get(i)); 
+			//System.out.println("AAAAA "+r.getOcenaAmbijenta());
+			if(r==null) {
+				continue;
+			}
+			if(!r.isJePotvrdjena()) {
+				continue;
+			}
 			if (ret.size() == 0) {
 				rdto.setPoseta(1);
 				ret.add(rdto);
