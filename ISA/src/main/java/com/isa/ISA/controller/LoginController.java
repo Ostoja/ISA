@@ -25,7 +25,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/returnRoleUser")
 	public boolean returnRoleUser(HttpServletRequest request) {
-		if(request.getSession().getAttribute("loggedUser")==null) {
+		if (request.getSession().getAttribute("loggedUser") == null) {
 			return false;
 		}
 		if (((User) request.getSession().getAttribute("loggedUser")).getTip().equals(TipKorisnika.Admin)
@@ -40,25 +40,46 @@ public class LoginController {
 
 	@RequestMapping(value = "/returnAdmin")
 	public boolean returnModerOrAdmin(HttpServletRequest request) {
-		if(request.getSession().getAttribute("loggedUser")==null) {
+		if (request.getSession().getAttribute("loggedUser") == null) {
 			return false;
 		}
 		if (((User) request.getSession().getAttribute("loggedUser")).getTip().equals(TipKorisnika.AdminBioPoz)) {
-			//System.out.println("jetseee");
+			// System.out.println("jetseee");
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	@RequestMapping(value ="/logout")
-	public boolean logOutUser(HttpServletRequest request){
+	@RequestMapping(value = "/returnAdmin1")
+	public boolean returnModerOrAdminFstTime(HttpServletRequest request) {
+		if (request.getSession().getAttribute("loggedUser") == null) {
+			return false;
+		}
+		if (((User) request.getSession().getAttribute("loggedUser")).getTip().equals(TipKorisnika.AdminBioPoz)) {
+			// System.out.println("jetseee");
+			User u = (User) request.getSession().getAttribute("loggedUser");
+			Admin a = as.getAdmin(u.getUsername());
+			if (a.getJeAktivan()) {
+				return true;
+			} 
+			else {
+				return false;
+			}
+		} 
+		else {
+			return true;
+		}
+	}
+
+	@RequestMapping(value = "/logout")
+	public boolean logOutUser(HttpServletRequest request) {
 		System.out.println("You successfully logged out. This session will be invalidated");
 		request.getSession().invalidate();
 		return true;
 
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "/api/login")
 	public User login(@RequestBody User us, HttpServletRequest request) {
 		System.out.println("BBB " + us);
@@ -75,7 +96,7 @@ public class LoginController {
 			u = (reg != null) ? reg : adm;
 		}
 		if (u.getPassword().equals(password)) {
-			
+
 			request.getSession().setAttribute("loggedUser", u);
 			System.out.println("User je " + u.getIme() + " " + request.getSession().getAttribute("loggedUser"));
 			return u;

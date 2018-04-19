@@ -115,7 +115,23 @@ function registerUser(){
 	
 }
 
-
+function checkFirstTime(){
+	$.ajax({
+		url:"returnAdmin1",
+		type:"GET",
+		contentType:"application/json",
+		dataType:"json",
+		success:function(data){
+			if(data==true){
+				top.location.href="index.html";
+			}else{
+				top.location.href="changepass.html";		
+			}
+			},error:function(jqxhr,textStatus,errorThrown){
+				alert(errorThrown);
+			}
+	});
+}
 
 function logInUser(){
 	$form=$("#loginForm");
@@ -133,6 +149,7 @@ function logInUser(){
 				toastr["error"]("Username/password is incorrect,doesn't exist or empty");
 				
 			}else{
+				checkFirstTime();
 				top.location.href="index.html";
 			}
 		},error: function(jqxhr,textStatus,errorThrown){

@@ -58,7 +58,7 @@ public class TestData {
 		k.setIme("Nikos");
 		k.setPrezime("Galis");
 		k.setEmail("niko@niko.com");
-		k.setJeAktivan(true);
+		k.setJeAktivan(false);
 		k.setTip(TipKorisnika.Obican);
 		System.out.println("Kreiran korisnik: " + k.getUsername());
 		korisnikService.addUser(k);
@@ -71,7 +71,7 @@ public class TestData {
         a.setIme("Adam");
         a.setPrezime("Adamovic");
         a.setGrad("Aleksinac");
-        a.setJeAktivan(true);
+        a.setJeAktivan(false);
         System.out.println("Kreiran korisnik: " + a.getUsername());
         adminService.addAdmin(a);
         

@@ -128,11 +128,7 @@ public class ProjekcijaController {
 		ps.updateProjekcija(pr);
     }
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/pb/{id}/projekcije/{id2}")
-    public void updateProjekcija(@RequestBody Projekcija pr, @PathVariable Long id, @PathVariable Long id2){
-        ps.updateProjekcija(pr);
-    }
-
+	
     @RequestMapping(method = RequestMethod.DELETE, value = "/pb/projekcije/{id}")
     public void deleteProjekcija(@PathVariable Long id, HttpServletRequest request){
     	System.out.println("AADDDDD"+id);
