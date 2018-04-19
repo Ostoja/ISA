@@ -92,6 +92,8 @@ public class RezervacijaController {
 	public void addRating(@RequestBody OcenaDTO ocena, HttpServletRequest request) {
 		Rezervacija roz = (Rezervacija) request.getSession().getAttribute("rezervacija");
 		Rezervacija r = rr.getOne(roz.getId());
+		Korisnik k = r.getRezervisao();
+		//k.setBodovi(k.getBodovi()+r.getKarta().getProjekcija().getFilmPredstava().getNosiBodova());
 		r.setOcenaAmbijenta(ocena.getOcenaAmbijenta());
 		r.setOcenaProjekcije(ocena.getOcenaProjekcije());
 		r.setJePotvrdjena(true);
@@ -99,7 +101,7 @@ public class RezervacijaController {
 		pbs.updateOcena(r.getKarta().getPozoristeBioskop().getId(), ocena.getOcenaAmbijenta());
 		fps.oceniFilmPredstava(ocena.getOcenaProjekcije(), r.getProjekcija().getFilmPredstava().getId());
 	}
-	//@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+	//@Transactional(readOnly = false)
 	@RequestMapping(method = RequestMethod.POST, value = "/rezervisi/{id}")
 	public void addRezervacija(@PathVariable String id, HttpServletRequest request) {
 		Long idl = Long.parseLong(id);

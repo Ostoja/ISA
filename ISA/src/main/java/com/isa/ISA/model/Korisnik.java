@@ -30,5 +30,14 @@ public class Korisnik extends User {
 		super();
 	}
 
+	public int getBodovi() {
+		return bodovi;
+	}
+
+	public void setBodovi(int bodovi) {
+		this.bodovi = bodovi;
+	}
+
+	
 	
 }
