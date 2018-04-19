@@ -37,6 +37,23 @@ window.onload = function(){
 				alert(errorThrown);
 			}
 	});
+	
+	$.ajax({
+		url:"/salla",
+		type:"GET",
+		contentType:"application/json",
+		dataType:"json",
+		success:function(data){
+			if(data!=null){
+				$("#halal").empty();
+				$("#halal").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.naziv+"\" required type=\"text\" id=\"naziv\" name=\"naziv\">");
+			}else{
+						
+			}
+			},error:function(jqxhr,textStatus,errorThrown){
+				alert(errorThrown);
+			}
+	});
 }
 /*
 function checkAuthorize(){

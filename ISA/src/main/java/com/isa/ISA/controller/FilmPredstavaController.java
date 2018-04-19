@@ -1,5 +1,7 @@
 package com.isa.ISA.controller;
 
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.isa.ISA.model.FilmPredstava;
 import com.isa.ISA.model.Projekcija;
+import com.isa.ISA.model.Sala;
 import com.isa.ISA.model.DTO.FilmPredstavaDTO;
+import com.isa.ISA.model.DTO.SalaDTO;
 import com.isa.ISA.repository.FilmPredstavaRepository;
 import com.isa.ISA.repository.ProjekcijaRepository;
 import com.isa.ISA.service.FilmPredstavaService;
@@ -43,6 +47,21 @@ public class FilmPredstavaController {
 		Long idl = Long.parseLong(id);
 		request.getSession().setAttribute("film", fpr.findOne(idl));
 		return "Ok";
+	}
+	
+	@RequestMapping("/showfilmp")
+	public FilmPredstavaDTO prikaziZaEdit(HttpServletRequest request) {
+		FilmPredstava pb = (FilmPredstava) request.getSession().getAttribute("film");
+		FilmPredstavaDTO s = new FilmPredstavaDTO();
+		s.setNaziv(pb.getNaziv());
+		s.setBrojOcena(pb.getBrojOcena());
+		s.setNosiBodova(pb.getNosiBodova());
+		s.setOpis(pb.getOpis());
+		s.setReditelj(pb.getReditelj());
+		s.setSpisakGlumaca(pb.getSpisakGlumaca());
+		s.setTrajanje(pb.getTrajanje());
+		s.setZanr(pb.getZanr());
+		return s;
 	}
 	
 	@RequestMapping("/fpa")

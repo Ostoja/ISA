@@ -37,6 +37,38 @@ window.onload = function(){
 				alert(errorThrown);
 			}
 	});
+	
+	$.ajax({
+		url:"/showfilmp",
+		type:"GET",
+		contentType:"application/json",
+		dataType:"json",
+		success:function(data){
+			if(data!=null){
+				$("#nejm").empty();
+				$("#nejm").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.naziv+"\" required type=\"text\" id=\"naziv\" name=\"naziv\">");
+				$("#djurejsn").empty();
+				$("#djurejsn").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.trajanje+"\" required type=\"text\" id=\"trajanje\" name=\"trajanje\">");
+				$("#reziser").empty();
+				$("#reziser").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.reditelj+"\" required type=\"text\" id=\"reditelj\" name=\"reditelj\">");
+				$("#glumci").empty();
+				$("#glumci").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.spisakGlumaca+"\" required type=\"text\" id=\"spisakGlumaca\" name=\"spisakGlumaca\">");
+				$("#genro").empty();
+				$("#genro").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.zanr+"\" required type=\"text\" id=\"zanr\" name=\"zanr\">");
+				$("#prajs").empty();
+				$("#prajs").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.cena+"\" required type=\"text\" id=\"cena\" name=\"cena\">");
+				$("#poeni").empty();
+				$("#poeni").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.nosiBodova+"\" required type=\"text\" id=\"nosiBodova\" name=\"nosiBodova\">");
+				$("#deskripcija").empty();
+				$("#deskripcija").append("<textarea style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.opis+"\" id=\"opis\" name=\"opis\" rows=\"5\"></textarea>");
+				
+			}else{
+						
+			}
+			},error:function(jqxhr,textStatus,errorThrown){
+				alert(errorThrown);
+			}
+	});
 }
 /*
 function checkAuthorize(){

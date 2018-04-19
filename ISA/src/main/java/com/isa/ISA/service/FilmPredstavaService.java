@@ -60,11 +60,13 @@ public class FilmPredstavaService {
 		fp.setReditelj(d.getReditelj());
 		fp.setOpis(d.getOpis());
 		fp.setNaziv(d.getNaziv());
+		System.out.println(fp.getOpis()+"ÄAAAAAA"+fp.getNaziv());
 		fp.setSpisakGlumaca(d.getSpisakGlumaca());
 		fp.setNosiBodova(d.getNosiBodova());
 		fp.setProsecnaOcena(d.getProsecnaOcena());
 		fp.setBrojOcena(d.getBrojOcena());
 		fp.setPoster(d.getPoster());
+		fp.setNosiBodova(d.getNosiBodova());
 		return fp;
 
 	}

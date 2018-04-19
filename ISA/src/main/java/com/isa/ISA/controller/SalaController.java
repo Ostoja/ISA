@@ -39,7 +39,13 @@ public class SalaController {
 	public List<Sala> getAllPozoristeBioskop() {
 		return sService.getAll();
 	}
-
+	@RequestMapping("/salla")
+	public SalaDTO vratiSaluZaEditovanje(HttpServletRequest request) {
+		Sala pb = (Sala) request.getSession().getAttribute("sala");
+		SalaDTO s = new SalaDTO();
+		s.setNaziv(pb.getNaziv());
+		return s;
+	}
 	@RequestMapping("/segsala/{id}")
     private String getAllProjekcijaPB(@PathVariable String id, HttpServletRequest request){
 		System.out.println("SalaCont + " +id);
@@ -91,11 +97,7 @@ public class SalaController {
 		sService.editSala(s, id);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/sala/edit/{id}")
-	public void editSala(@RequestBody Sala s, @PathVariable Long id) {
-		sService.editSala(s, id);
-	}
-
+	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saladelete/{id}")
 	public void deleteSala(@PathVariable Long id, HttpServletRequest request) {
 		PozoristeBioskop pb = (PozoristeBioskop)request.getSession().getAttribute("pozbio");
