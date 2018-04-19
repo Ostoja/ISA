@@ -22,31 +22,7 @@ public class AdminController {
 	    	return as.getAllAdmins(); 
 	    }
 
-	    @RequestMapping(method = RequestMethod.POST,value = "/api/admins")
-	    public void addAdmin(@RequestBody Admin a){
-	        as.addAdmin(a);
-	    }
 	    
-	    @RequestMapping(method = RequestMethod.GET,value = "/admin/{username}")
-	    public Admin getAdmin(@PathVariable String username){ 
-	    	return as.getAdmin(username); 
-	    }
-	    
-	    @RequestMapping(method = RequestMethod.PUT,value="/admin/{id}")
-	    public void updateAdmin(@RequestBody Admin a, @PathVariable Long id){
-	        as.updateAdmin(a);
-	    }
-
-	    @RequestMapping(method = RequestMethod.PUT,value="/admin/{id}/pass")
-	    public void updateAdminPassword(@RequestBody Admin a, @PathVariable Long id){
-	        as.updatePassword(a);
-	    }
-
-	    @RequestMapping(method = RequestMethod.DELETE, value = "/admin/{id}")
-	    public void deleteAdmin(@RequestBody Admin a, @PathVariable Long id){
-	        as.deleteAdmin(a);
-	    }
-
 	    
 	
 }

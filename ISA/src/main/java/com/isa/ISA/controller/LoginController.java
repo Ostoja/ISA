@@ -12,6 +12,7 @@ import com.isa.ISA.model.Admin;
 import com.isa.ISA.model.Korisnik;
 import com.isa.ISA.model.TipKorisnika;
 import com.isa.ISA.model.User;
+import com.isa.ISA.model.DTO.PasswordDTO;
 import com.isa.ISA.service.AdminService;
 import com.isa.ISA.service.KorisnikService;
 
@@ -74,8 +75,7 @@ public class LoginController {
 			u = (reg != null) ? reg : adm;
 		}
 		if (u.getPassword().equals(password)) {
-			if (u instanceof Admin && u.getPassword().equals("default"))
-				u.setJeAktivan(false);
+			
 			request.getSession().setAttribute("loggedUser", u);
 			System.out.println("User je " + u.getIme() + " " + request.getSession().getAttribute("loggedUser"));
 			return u;
