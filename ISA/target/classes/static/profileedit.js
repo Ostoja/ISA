@@ -47,6 +47,16 @@ window.onload = function(){
 			if(data!=null){
 				$("#mejl").empty();
 				$("#mejl").append("<input type=\"text\" class=\"form-control\" title=\"Enter your email address here\" pattern=\"/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/\" value=\""+data.email+"\" required id=\"email\" name=\"email\">");
+				$("#usernejm").empty();
+				$("#usernejm").append("<input class=\"form-control\" maxlength=\"30\" title=\"Create your username\" type=\"text\" value=\""+data.username+"\" required id=\"username\" name=\"username\">");
+				$("#nejm").empty();
+				$("#nejm").append("<input class=\"form-control\" title=\"First name must start with uppercase letter and must not contain digits\" type=\"text\" value=\""+data.ime+"\"  id=\"ime\" name=\"ime\">");
+				$("#surnejm").empty();
+				$("#surnejm").append("<input class=\"form-control\" title=\"Last name must start with uppercase letter and must not contain digits\" type=\"text\" value=\""+data.prezime+"\"  id=\"prezime\" name=\"prezime\">");
+				$("#siti").empty();
+				$("#siti").append("<input class=\"form-control\" type=\"text\" title=\"City\" value=\""+data.grad+"\" id=\"grad\" name=\"grad\" >");
+				$("#foun").empty();
+				$("#foun").append("<input class=\"form-control\" type=\"text\" title=\"Phone number must be entered in the form specified by the placeholder\" value=\""+data.brojTelefona+"\" id=\"brojTelefona\" name=\"brojTelefona\" >");
 			}else{
 						
 			}

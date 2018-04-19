@@ -75,6 +75,9 @@ public class KartaService {
 	}
 
 	public void deleteKarta(Long id) {
+		if(kRepo.getOne(id).isIzvrsena()) {
+			return;
+		}
 		kRepo.delete(id);
 		
 	}
