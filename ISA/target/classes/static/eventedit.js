@@ -45,6 +45,7 @@ window.onload = function(){
 		dataType:"json",
 		success:function(data){
 			if(data!=null){
+				console.log(data);
 				$("#nejm").empty();
 				$("#nejm").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.naziv+"\" required type=\"text\" id=\"naziv\" name=\"naziv\">");
 				$("#djurejsn").empty();
@@ -55,12 +56,10 @@ window.onload = function(){
 				$("#glumci").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.spisakGlumaca+"\" required type=\"text\" id=\"spisakGlumaca\" name=\"spisakGlumaca\">");
 				$("#genro").empty();
 				$("#genro").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.zanr+"\" required type=\"text\" id=\"zanr\" name=\"zanr\">");
-				$("#prajs").empty();
-				$("#prajs").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.cena+"\" required type=\"text\" id=\"cena\" name=\"cena\">");
 				$("#poeni").empty();
 				$("#poeni").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.nosiBodova+"\" required type=\"text\" id=\"nosiBodova\" name=\"nosiBodova\">");
 				$("#deskripcija").empty();
-				$("#deskripcija").append("<textarea style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.opis+"\" id=\"opis\" name=\"opis\" rows=\"5\"></textarea>");
+				$("#deskripcija").append("<textarea style=\"margin-left:10px;margin-right:5px;width:98%;\" id=\"opis\" name=\"opis\" rows=\"5\">"+data.opis+"</textarea>");
 				
 			}else{
 						
