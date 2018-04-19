@@ -37,7 +37,7 @@ public class ReportService {
 	private KartaRepository kartaRepository;
 
 	public double getOcenaPB(Long id) {
-		return fpr.findOne(id).getProsecnaOcena();
+		return pbr.findOne(id).getProsecnaOcena();
 	}
 
 	public double getOcenaFP(Long id) {
