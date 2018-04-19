@@ -61,7 +61,10 @@ function napraviRepertoar(index,repertoar){
 	divRepertoar.append("<div class=\"panel-footer\" id=\"time\"><label style=\"font-weight:bold;margin-right:5px;\">Duration: </label>"+repertoar.trajanje +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Director: </label>"+repertoar.reditelj +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Actors: </label>"+repertoar.spisakGlumaca +"</div>");
-	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Genre: </label>"+repertoar.zanr +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"necena\"><label style=\"font-weight:bold;margin-right:5px;\">Genre: </label>"+repertoar.zanr +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"necena\"><label style=\"font-weight:bold;margin-right:5px;\">Rating: </label>"+repertoar.prosecnaOcena +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"poster\"><label style=\"font-weight:bold;margin-right:5px;\">Icon:</label style=\"width:30px;height:10px;\"><img  src=\"./loadFile/"+repertoar.poster+"\" height=\"100\" width=\"100\" class=\"icon\"></div>");
+
 }
 
 function deletuj(id){

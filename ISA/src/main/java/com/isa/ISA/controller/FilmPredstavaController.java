@@ -3,6 +3,7 @@ package com.isa.ISA.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,10 +75,12 @@ public class FilmPredstavaController {
 		return fps.getFilmPredstava(id);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/fp")
-	public void addFilmPredstava(@RequestBody FilmPredstavaDTO fp) {
-		System.out.println("FPCOnT dodajem "+fp.getNaziv());
+	@RequestMapping(method = RequestMethod.POST, value = "/fp/{naziv}")
+	public String addFilmPredstava(@RequestBody FilmPredstavaDTO fp, @PathVariable String naziv) {
+		System.out.println("FPCOnT dodajem "+fp.getNaziv()+" "+naziv);
+		fp.setPoster(naziv);
 		fps.addFilmPredstava(fp);
+		return "Uspeh";
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/fp")

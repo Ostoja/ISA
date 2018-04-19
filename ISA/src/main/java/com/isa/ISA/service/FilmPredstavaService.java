@@ -64,6 +64,7 @@ public class FilmPredstavaService {
 		fp.setNosiBodova(d.getNosiBodova());
 		fp.setProsecnaOcena(d.getProsecnaOcena());
 		fp.setBrojOcena(d.getBrojOcena());
+		fp.setPoster(d.getPoster());
 		return fp;
 
 	}

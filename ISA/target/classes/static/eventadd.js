@@ -93,24 +93,52 @@ function dodajFilm(){
 	$form = $("#noviEvent");
 	var data = getFormData($form);
 	var s = JSON.stringify(data);
+	var objFile = $('#poster');
+	var file = objFile[0].files[0];
+	if(file!=undefined){
 	$.ajax({
-		url:"/fp",
+		url:"/fp/"+file.name,
 		type:"POST",
 		data:s,
 		contentType:"application/json",
 		dataType:"json",
 		success:function(data){
-			if(data==false){
-				toastr["error"]("Registration failed");
+			
+				toastr["success"]("Success");
+					$.ajax({
+					
+					async : false,
+					type : "POST",
+					url : "/file/" + file.name,
+			        contentType : false,
+			        data: file,
+			        processData: false,
+			    
+			        
+			        
+				});
 				
-			}else{
-				toastr["success"]("Registration successfull");
-				}
 			
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			toastr["success"]("Success");
+			$.ajax({
+			
+			async : false,
+			type : "POST",
+			url : "/file/" + file.name,
+	        contentType : "multipart/form-data",
+	        data: file,
+	        processData: false,
+	    
+	        
+	        
+		});
 		}
 	});
-	
+	}else{
+		toastr["error"]("Please choose icon");
+		
+		
+	}
 }
 

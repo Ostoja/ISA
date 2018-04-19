@@ -63,6 +63,9 @@ public class KartaService {
 		int a = 2;
 		a++;
 		System.out.println(a);
+		if(kRepo.findByProjekcijaAndMesto(p.getProjekcija(), p.getMesto()).size()>0) {
+			return;
+		}
 		addKarta(p);
 	}
 	

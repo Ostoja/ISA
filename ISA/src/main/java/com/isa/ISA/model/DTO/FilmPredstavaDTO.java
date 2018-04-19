@@ -19,7 +19,8 @@ public class FilmPredstavaDTO {
 
 	private String spisakGlumaca;
 
-
+	private String poster;
+	
 	public String getNaziv() {
 		return naziv;
 	}
@@ -91,6 +92,15 @@ public class FilmPredstavaDTO {
 
 	public void setSpisakGlumaca(String spisakGlumaca) {
 		this.spisakGlumaca = spisakGlumaca;
+	}
+	
+	
+	public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
 	}
 
 	public FilmPredstavaDTO(){}

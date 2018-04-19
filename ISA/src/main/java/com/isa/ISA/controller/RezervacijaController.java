@@ -96,11 +96,15 @@ public class RezervacijaController {
 	public void addRating(@RequestBody OcenaDTO ocena, HttpServletRequest request) {
 		Rezervacija roz = (Rezervacija) request.getSession().getAttribute("rezervacija");
 		Rezervacija r = rr.getOne(roz.getId());
+		if(r.isJePotvrdjena()) {
+			return;
+		}
 		Korisnik k = r.getRezervisao();
-		//k.setBodovi(k.getBodovi()+r.getKarta().getProjekcija().getFilmPredstava().getNosiBodova());
+		k.setBodovi(k.getBodovi()+r.getKarta().getProjekcija().getFilmPredstava().getNosiBodova());
 		r.setOcenaAmbijenta(ocena.getOcenaAmbijenta());
 		r.setOcenaProjekcije(ocena.getOcenaProjekcije());
 		r.setJePotvrdjena(true);
+		System.out.println("BOdova ima sad+ "+k.getBodovi());
 		rr.save(r);
 		pbs.updateOcena(r.getKarta().getPozoristeBioskop().getId(), ocena.getOcenaAmbijenta());
 		fps.oceniFilmPredstava(ocena.getOcenaProjekcije(), r.getProjekcija().getFilmPredstava().getId());
