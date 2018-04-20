@@ -2,6 +2,7 @@ package com.isa.ISA.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +83,13 @@ public class RezervacijaController {
 		r.setMesto(rezervacija.getMesto().getBroj());
 		r.setPbname(rezervacija.getKarta().getPozoristeBioskop().getNaziv());
 		r.setId(rezervacija.getId());
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+		r.setDatum(DATE_FORMAT.format(rezervacija.getProjekcija().getDatum()));
+		r.setTermin(rezervacija.getProjekcija().getTermin());
+		r.setSegname(rezervacija.getKarta().getMesto().getSegmentUSali().getNaziv());
+		r.setCena(rezervacija.getKarta().getPunaCena());
+		r.setPopust(rezervacija.getKarta().getPopust());
+		r.setRed(rezervacija.getKarta().getMesto().getRed());
 		System.out.println("RezCont + "+ r);
 		return r;
 	}
@@ -119,6 +127,9 @@ public class RezervacijaController {
 		}
 		Korisnik ko = kor.getOne(u.getId());
 		Karta k = kartaRepo.getOne(idl);
+		if(k.isIzvrsena()) {
+			return;
+		}
 		k.setIzvrsena(true);
 		kartaRepo.save(k);
 		Rezervacija re = new Rezervacija();

@@ -9,6 +9,8 @@ public class KartaDTO {
 	
 	private long mesto;
 
+	private int red;
+	
 	private long rezervacija;
 
 	private long projekcija;
@@ -115,11 +117,11 @@ public class KartaDTO {
 
 	@Override
 	public String toString() {
-		return "KartaDTO [id=" + id + ", mesto=" + mesto + ", rezervacija=" + rezervacija + ", projekcija=" + projekcija
-				+ ", pozoristeBioskop=" + pozoristeBioskop + ", vremeOdrzavanja=" + vremeOdrzavanja + ", termin="
-				+ termin + ", punaCena=" + punaCena + ", popust=" + popust + ", segmentUsali=" + segmentUsali
-				+ ", sala=" + sala + ", pb=" + pb + ", seg=" + seg + ", mes=" + mes + ", film=" + film + ", tip=" + tip
-				+ "]";
+		return "KartaDTO [id=" + id + ", mesto=" + mesto + ", red=" + red + ", rezervacija=" + rezervacija
+				+ ", projekcija=" + projekcija + ", pozoristeBioskop=" + pozoristeBioskop + ", vremeOdrzavanja="
+				+ vremeOdrzavanja + ", termin=" + termin + ", punaCena=" + punaCena + ", popust=" + popust
+				+ ", segmentUsali=" + segmentUsali + ", sala=" + sala + ", pb=" + pb + ", seg=" + seg + ", mes=" + mes
+				+ ", film=" + film + ", tip=" + tip + "]";
 	}
 
 	public String getSala() {
@@ -176,6 +178,14 @@ public class KartaDTO {
 
 	public void setTip(TipSedista tip) {
 		this.tip = tip;
+	}
+
+	public int getRed() {
+		return red;
+	}
+
+	public void setRed(int red) {
+		this.red = red;
 	}
 	
 	

@@ -62,7 +62,7 @@ function napraviPBioskop(index,pbioskop){
 	divPBioskopi.append("<div class=\"panel-footer\" id=\"adresa\"><label style=\"font-weight:bold;margin-right:5px;\">Address: </label>"+pbioskop.adresa +"</div>");
 	
 	divPBioskopi.append("<div class=\"panel-footer\" id=\"promotivniOpis\"><label style=\"font-weight:bold;margin-right:5px;\">Description: </label>"+pbioskop.promotivniOpis +"</div>");
-}
+	divPBioskopi.append("<div class=\"panel-footer\" id=\"promotivniOpis\"><label style=\"font-weight:bold;margin-right:5px;\">Rating: </label>"+pbioskop.prosecnaOcena +"</div>");}
 
 function repertoar(id){
 	alert(id)

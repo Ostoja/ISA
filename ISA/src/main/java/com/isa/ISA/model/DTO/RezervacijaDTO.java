@@ -19,6 +19,18 @@ public class RezervacijaDTO {
 	
 	private int broj; //broj mesta
 	
+	private String segname;
+	
+	private String datum;
+	
+	private String termin;
+	
+	private int red;
+	
+	private int cena;
+	
+	private int popust;
+	
 	private long korisnik; //id korisnika
 	
 	private boolean jePotvrdjena; //aka da li je ocenio, verovatno ne treba
@@ -111,8 +123,9 @@ public class RezervacijaDTO {
 	public String toString() {
 		return "RezervacijaDTO [id=" + id + ", ocenaAmbijenta=" + ocenaAmbijenta + ", ocenaProjekcije="
 				+ ocenaProjekcije + ", pbname=" + pbname + ", fname=" + fname + ", sname=" + sname + ", projekcija="
-				+ projekcija + ", mesto=" + mesto + ", broj=" + broj + ", korisnik=" + korisnik + ", jePotvrdjena="
-				+ jePotvrdjena + "]";
+				+ projekcija + ", mesto=" + mesto + ", broj=" + broj + ", segname=" + segname + ", datum=" + datum
+				+ ", termin=" + termin + ", red=" + red + ", cena=" + cena + ", popust=" + popust + ", korisnik="
+				+ korisnik + ", jePotvrdjena=" + jePotvrdjena + "]";
 	}
 
 	public long getId() {
@@ -121,6 +134,54 @@ public class RezervacijaDTO {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getSegname() {
+		return segname;
+	}
+
+	public void setSegname(String segname) {
+		this.segname = segname;
+	}
+
+	public String getDatum() {
+		return datum;
+	}
+
+	public void setDatum(String datum) {
+		this.datum = datum;
+	}
+
+	public String getTermin() {
+		return termin;
+	}
+
+	public void setTermin(String termin) {
+		this.termin = termin;
+	}
+
+	public int getCena() {
+		return cena;
+	}
+
+	public void setCena(int cena) {
+		this.cena = cena;
+	}
+
+	public int getPopust() {
+		return popust;
+	}
+
+	public void setPopust(int popust) {
+		this.popust = popust;
+	}
+
+	public int getRed() {
+		return red;
+	}
+
+	public void setRed(int red) {
+		this.red = red;
 	}
 
 	

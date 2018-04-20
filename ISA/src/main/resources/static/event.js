@@ -59,9 +59,10 @@ function napraviRepertoar(repertoar){
 	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Actors: </label>"+repertoar.spisakGlumaca +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Genre: </label>"+repertoar.zanr +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Rating: </label>"+repertoar.prosecnaOcena +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Desciption: </label>"+repertoar.opis +"</div>");
 
 }
-
+/*
 function film(id){
 	$.ajax({
 		url:"/projekcije/"+id,
@@ -76,7 +77,7 @@ function film(id){
 		
 	});
 }
-
+*/
 
 function logOutUser(){
 	$.ajax({

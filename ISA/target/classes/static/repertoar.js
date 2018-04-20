@@ -1,6 +1,6 @@
 window.onload = function(){
 	var isprazniRepertoar=$("#repertoar").empty();
-	alert('AaA');
+	//alert('AaA');
 	$.ajax({
 		url:"/returnRoleUser",
 		type:"GET",
@@ -70,7 +70,7 @@ function film(id){
 		type:"GET",
 		success:function(data){
 			if(data!=null){
-				window.location.replace("dogadjaj.html"); //event.html
+				window.location.replace("event.html"); //event.html
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
 			alert(errorThrown);

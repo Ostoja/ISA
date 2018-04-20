@@ -57,12 +57,12 @@ public class SegmentUSaliService {
 		susr.save(sus);
 		int k =0;
 		List<Mesto> mesta = new ArrayList<>();
-		for (int i = 1; i <= s.getKolone(); i++) {
-			for (int j = 1; j <= s.getRedovi(); j++) {
+		for (int i = 1; i <= s.getRedovi(); i++) {
+			for (int j = 1; j <= s.getKolone(); j++) {
 				Mesto mesto = new Mesto();
 				k++;
-				mesto.setKolona(i);
-				mesto.setRed(j);
+				mesto.setKolona(j);
+				mesto.setRed(i);
 				mesto.setBroj(k);
 				mesto.setTipSedista(sus.getTipSedista());
 				mesta.add(mesto);
@@ -83,12 +83,12 @@ public class SegmentUSaliService {
 		susr.save(sus);
 		int k = 0;
 		List<Mesto> mesta = new ArrayList<>();
-		for (int i = 1; i <= s.getKolone(); i++) {
-			for (int j = 1; j <= s.getRedovi(); j++) {
+		for (int i = 1; i <= s.getRedovi(); i++) {
+			for (int j = 1; j <= s.getKolone(); j++) {
 				Mesto mesto = new Mesto();
-				mesto.setKolona(i);
+				mesto.setKolona(j);
 				k++;
-				mesto.setRed(j);
+				mesto.setRed(i);
 				mesto.setTipSedista(sus.getTipSedista());
 				mesta.add(mesto);
 				mesto.setSegmentUSali(sus);
@@ -163,12 +163,12 @@ public class SegmentUSaliService {
 		sus.setId(id);
 		int k = 0;
 		List<Mesto> mesta = new ArrayList<>();
-		for (int i = 1; i <= s.getKolone(); i++) {
-			for (int j = 1; j <= s.getRedovi(); j++) {
+		for (int i = 1; i <= s.getRedovi(); i++) {
+			for (int j = 1; j <= s.getKolone(); j++) {
 				Mesto mesto = new Mesto();
-				mesto.setKolona(i);
+				mesto.setKolona(j);
 				k++;
-				mesto.setRed(j);
+				mesto.setRed(i);
 				mesto.setTipSedista(sus.getTipSedista());
 				mesta.add(mesto);
 				mesto.setSegmentUSali(sus);

@@ -149,8 +149,14 @@ function napraviRepertoar(index,repertoar){
 	var divRepertoar=$("#divSnimljeniEntiteti")
 	console.log(repertoar);
 	divRepertoar.append("<div class=\"panel-heading\" style=\"background-color:lightsteelblue\"  id=\"film\"><label style=\"font-weight:bold;font-size: 17px;margin-right:5px;\">Projection: </label><a style=\"color:white\" onclick=\"otvoriBioskop("+repertoar+")\">"+repertoar.fname+"</a><button style=\"float: right; margin-right:10px;\" onclick=\"oceni("+repertoar.id+")\"  class=\"btn btn-info\" float=\"right\" ><span class=\"glyphicon glyphicon-ok-sign\"></span> Rate!</button><button style=\"float: right; margin-right:10px;\" onclick=\"deletuj("+repertoar.id+")\"  class=\"btn btn-danger\" float=\"right\" ><span class=\"glyphicon glyphicon-remove\"></span> Cancel</button><button class=\"btn btn-success\" style=\"margin-right:10px; margin-left:10px;\" onclick=\"editProj("+repertoar.id+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-open\"></span> Edit</button><button style=\"margin-right:10px; \" class=\"btn btn-warning\" onclick=\"otpratiPodforum("+index+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-close\"></span> UNFOLLOW</button><button class=\"btn btn-info\"  onclick=\"napisiZalbu("+index+")\"><span class=\"glyphicon glyphicon-list-alt\"></span> Write complaint</button></div>");
-	divRepertoar.append("<div class=\"panel-footer\" id=\"mesto\"><label style=\"font-weight:bold;margin-right:5px;\">Seat: </label>"+repertoar.broj +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Institution: </label>"+repertoar.pbname+"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Hall: </label>"+repertoar.sname+"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Segment: </label>"+repertoar.segname+"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"mesto\"><label style=\"font-weight:bold;margin-right:5px;\">Seat: </label>"+repertoar.mesto +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Date: </label>"+repertoar.datum+"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Time: </label>"+repertoar.termin+"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">You rated the institution with a: </label>"+repertoar.ocenaAmbijenta+"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">You rated the event with a: </label>"+repertoar.ocenaProjekcije+"</div>");
 }
 
 function deletuj(id){

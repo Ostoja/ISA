@@ -105,6 +105,7 @@ public class KartaController {
 		k.setSeg(karta.getMesto().getSegmentUSali().getNaziv());
 		k.setPb(karta.getPozoristeBioskop().getNaziv());
 		k.setTip(karta.getMesto().getTipSedista());
+		k.setRed(karta.getMesto().getRed());
 		return k; // bilo je return null, wow
 	}
 
