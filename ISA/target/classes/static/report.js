@@ -138,6 +138,8 @@ function izvestajPoseta(){
 	$form = $("#noviProj");
 	var data = getFormData($form);
 	var s = JSON.stringify(data);
+	var divRepertoar=$("#izvestaj")
+	divRepertoar.empty();
 	console.log(s);
 	$.ajax({
 		url:"/izvestaj/posecenost",
@@ -161,7 +163,7 @@ function izvestajPoseta(){
 
 function napraviPoseta(index, repertoar) {
 	var divRepertoar=$("#izvestaj")
-	divRepertoar.empty();
+	
 	console.log(repertoar);
 	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Date: </label>"+repertoar.datum +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"cena\"><label style=\"font-weight:bold;margin-right:5px;\">Number of visits: </label>"+repertoar.poseta +"</div>");

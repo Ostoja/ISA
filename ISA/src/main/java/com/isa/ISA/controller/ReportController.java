@@ -56,6 +56,7 @@ public class ReportController {
     private List<ReportDTO> getPosecenostIzmedju(@RequestBody DatumDTO d, HttpServletRequest request){
 		PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
 		long id = pb.getId();
+		System.out.println("Posecenost ");
 		if(d.getKa()!=null && d.getOd()!=null) {
 			return reportService.getPoseteIzmedju(id, d.getOd(), d.getKa());
 		}

@@ -137,6 +137,8 @@ public class ReportService {
 				}
 			}
 		}
+		System.out.println("Poseta3 je bila "+ret.size());
+
 		return ret;
 	}
 
@@ -173,6 +175,8 @@ public class ReportService {
 				}
 			}
 		}
+		System.out.println("Poseta2 je bila "+ret.size());
+
 		return ret;
 	}
 
@@ -189,26 +193,34 @@ public class ReportService {
 			Rezervacija r = rezervacijaRepository.findByKarta(karte.get(i)); 
 			//System.out.println("AAAAA "+r.getOcenaAmbijenta());
 			if(r==null) {
+				System.out.println("NULLA");
 				continue;
 			}
 			if(!r.isJePotvrdjena()) {
+				System.out.println("POTVRDJENA NIJE");
 				continue;
 			}
 			if (ret.size() == 0) {
 				rdto.setPoseta(1);
 				ret.add(rdto);
 			} else {
-				for (int j = 0; j < ret.size(); j++) {
+				int m = ret.size();
+				for (int j = 0; j < m; j++) {
 					if (ret.get(j).getDatum().equals(rdto.getDatum())) {
-						rdto.setPoseta(rdto.getPoseta() + 1);
+						int l = ret.get(j).getPoseta()+1;
+						rdto.setPoseta(l);
+						ret.remove(ret.get(j));
 						ret.add(rdto);
+						System.out.println("Dodao je ovde"+rdto.getPoseta());
 					} else {
 						rdto.setPoseta(1);
 						ret.add(rdto);
+						System.out.println("Dodao je tu");
 					}
 				}
 			}
 		}
+		System.out.println("Poseta je bila "+ret.size());
 		return ret;
 	}
 
