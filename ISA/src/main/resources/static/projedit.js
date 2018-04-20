@@ -57,7 +57,7 @@ window.onload = function(){
 	});
 	
 	$.ajax({
-		url:"/sale",
+		url:"/hale",
 		type:"GET",
 		contentType:"application/json",
 		dataType:"json",

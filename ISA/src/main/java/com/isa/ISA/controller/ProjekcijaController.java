@@ -110,7 +110,11 @@ public class ProjekcijaController {
     public void addProjekcija(@RequestBody ProjekcijaDTO p){
 		//PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
 		//p.setPozoristeBioskop(pb.getId());
-        ps.addProjekcija(p);
+		if(p.getCena()<0||p.getDatum().equals("")||p.getTermin().equals("")||p.getSala()==0||p.getFilmPredstava()==0)
+		{
+			return;
+		}
+			ps.addProjekcija(p);
     }
 	
 	@RequestMapping("/projekcijaedit")

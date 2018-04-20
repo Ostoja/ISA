@@ -104,6 +104,9 @@ public class RezervacijaController {
 	public void addRating(@RequestBody OcenaDTO ocena, HttpServletRequest request) {
 		Rezervacija roz = (Rezervacija) request.getSession().getAttribute("rezervacija");
 		Rezervacija r = rr.getOne(roz.getId());
+		if(ocena.getOcenaAmbijenta()<0||ocena.getOcenaAmbijenta()>5||ocena.getOcenaProjekcije()<0||ocena.getOcenaProjekcije()>5) {
+			return;
+		}
 		if(r.isJePotvrdjena()) {
 			return;
 		}

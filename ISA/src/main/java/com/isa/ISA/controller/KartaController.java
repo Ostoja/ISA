@@ -117,6 +117,9 @@ public class KartaController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/pick")
 	public void addKarta2(@RequestBody KartaDTO ka, HttpServletRequest request) {
+		if(ka.getPopust()<0||ka.getPopust()>100) {
+			return;
+		}
 		PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
 		Mesto mesto = (Mesto) request.getSession().getAttribute("mesto");
 		KartaDTO p = new KartaDTO();
@@ -140,6 +143,9 @@ public class KartaController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/pb/karte")
 	public void addKarta(@RequestBody KartaDTO p, HttpServletRequest request) {
+		if(p.getPopust()<0||p.getPopust()>100) {
+			return;
+		}
 		PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
 		PozoristeBioskop pbo = pbr.getOne(pb.getId());
 		p.setPozoristeBioskop(pbo.getId());

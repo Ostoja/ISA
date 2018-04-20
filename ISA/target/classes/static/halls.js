@@ -1,6 +1,6 @@
 window.onload = function(){
 	var isprazniRepertoar=$("#hall").empty();
-	alert('hala');
+	//alert('hala');
 	$.ajax({
 		url:"/returnRoleUser",
 		type:"GET",

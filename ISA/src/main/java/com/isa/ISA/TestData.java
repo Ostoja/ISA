@@ -63,6 +63,17 @@ public class TestData {
 		System.out.println("Kreiran korisnik: " + k.getUsername());
 		korisnikService.addUser(k);
 		
+		Korisnik k1 = new Korisnik();
+		k1.setUsername("niko1");
+		k1.setPassword("rozberg1");
+		k1.setIme("Nikos");
+		k1.setPrezime("Galis");
+		k1.setEmail("niko1@niko.com");
+		k1.setJeAktivan(false);
+		k1.setTip(TipKorisnika.Obican);
+		System.out.println("Kreiran korisnik: " + k1.getUsername());
+		korisnikService.addUser(k1);
+		
 		Admin a = new Admin();
         a.setUsername("admin");
         a.setPassword("admini");
@@ -75,6 +86,18 @@ public class TestData {
         System.out.println("Kreiran korisnik: " + a.getUsername());
         adminService.addAdmin(a);
         
+        Admin a1 = new Admin();
+        a1.setUsername("admin1");
+        a1.setPassword("admini");
+        a1.setTip(TipKorisnika.AdminBioPoz);
+        a1.setEmail("admin1@admin.com");
+        a1.setIme("Adam");
+        a1.setPrezime("Adamovic");
+        a1.setGrad("Aleksinac");
+        a1.setJeAktivan(false);
+        System.out.println("Kreiran korisnik: " + a1.getUsername());
+        adminService.addAdmin(a1);
+        
         PozoristeBioskop p1 = new PozoristeBioskop();
         p1.setBrojOcena(0);
         p1.setProsecnaOcena(0);
@@ -86,6 +109,28 @@ public class TestData {
         p1.setVrstaAmbijenta(VrstaAmbijenta.Bioskop);
         p1.setAdresa("Gondolin, Tolkinova 43");
 
+        PozoristeBioskop p2 = new PozoristeBioskop();
+        p2.setBrojOcena(0);
+        p2.setProsecnaOcena(0);
+        List<Admin> adminList2 = new ArrayList<>();
+        adminList2.add(a);
+        adminList2.add(a1);
+        p2.setAdmini(adminList2);
+        p2.setNaziv("SNP");
+        p2.setPromotivniOpis("U centru pozoriste");
+        p2.setVrstaAmbijenta(VrstaAmbijenta.Pozoriste);
+        p2.setAdresa("Bri, Tolkinova 43");
+        
+        PozoristeBioskop p3 = new PozoristeBioskop();
+        p3.setBrojOcena(0);
+        p3.setProsecnaOcena(0);
+        List<Admin> adminList3 = new ArrayList<>();
+        adminList3.add(a1);
+        p3.setAdmini(adminList3);
+        p3.setNaziv("Arena");
+        p3.setPromotivniOpis("U centru bioskop");
+        p3.setVrstaAmbijenta(VrstaAmbijenta.Bioskop);
+        p3.setAdresa("Bri, Tolkinova 43");
         //pbService.addPozoristeBioskop(p1);
         Sala s1 = new Sala();
         s1.setBrojKolona(10);
@@ -148,6 +193,8 @@ public class TestData {
         p1.setRepertoar(projekcije);
 
         pbService.addPozoristeBioskop(p1);
+        pbService.addPozoristeBioskop(p2);
+        pbService.addPozoristeBioskop(p3);
         fp.setMestoOdrzavanja(p1);
         filmPredstavaService.updateFilmPredstava(fp);
         

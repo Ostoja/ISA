@@ -83,6 +83,9 @@ public class SalaController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sala/add")
 	public void addSala(@RequestBody SalaDTO s, HttpServletRequest request) {
+		if(s.getNaziv().equals("")) {
+			return;
+		}
 		PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
 		s.setPozoristeBioskop(pb.getId());
 		sService.addSala(s);

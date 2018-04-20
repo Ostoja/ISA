@@ -135,6 +135,9 @@ public class SegmentUSaliController {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/segment/add")
 	public void addSala(@RequestBody SegmentUSaliDTO s, HttpServletRequest request) {
+		if(s.getKolone()<1||s.getRedovi()<1||s.getNaziv().equals("")) {
+			return;
+		}
 		Sala pb = (Sala) request.getSession().getAttribute("sala");
 		s.setSala(pb.getId());
 		System.out.println("SegCont + "+s.toString());

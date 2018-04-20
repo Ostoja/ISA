@@ -97,6 +97,10 @@ public class FilmPredstavaController {
 	@RequestMapping(method = RequestMethod.POST, value = "/fp/{naziv}")
 	public String addFilmPredstava(@RequestBody FilmPredstavaDTO fp, @PathVariable String naziv) {
 		System.out.println("FPCOnT dodajem "+fp.getNaziv()+" "+naziv);
+		if(fp.getNaziv().equals("")||fp.getOpis().equals("")||fp.getNosiBodova()<1
+				||fp.getNosiBodova()>10||fp.getReditelj().equals("")||fp.getTrajanje()<0||fp.getZanr().equals("")) {
+			return null;
+		}
 		fp.setPoster(naziv);
 		fps.addFilmPredstava(fp);
 		return "Uspeh";
