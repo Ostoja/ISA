@@ -97,7 +97,19 @@ public class SegmentUSaliController {
         }
         return temp;
 	}
-	
+	@RequestMapping("/seggment") //sve osim tipa, tip kasnije
+	public SegmentUSaliDTO getSegmentEdit(HttpServletRequest request) {
+		SegmentUSali sus = (SegmentUSali) request.getSession().getAttribute("segment");
+		sus = susr.getOne(sus.getId());
+		SegmentUSaliDTO susDTO = new SegmentUSaliDTO();
+		susDTO.setJeZatvoreno(sus.isJeZatvoreno());
+		susDTO.setKolone(sus.getKolone());
+		susDTO.setNaziv(sus.getNaziv());
+		susDTO.setRedovi(sus.getRedovi());
+		susDTO.setSala(sus.getSala().getId());
+		susDTO.setTipSedista(sus.getTipSedista());
+		return susDTO;
+	}
 	@RequestMapping("/segment/{id}")
 	public SegmentUSali getSala(@PathVariable Long id) {
 		return suss.getOne(id);

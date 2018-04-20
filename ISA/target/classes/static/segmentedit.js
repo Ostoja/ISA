@@ -36,7 +36,39 @@ window.onload = function(){
 				alert(errorThrown);
 			}
 	});
-	
+	var seatType;
+	$.ajax({
+		url:"/seggment",
+		type:"GET",
+		contentType:"application/json",
+		dataType:"json",
+		success:function(data){
+			if(data!=null){
+				console.log(data);
+				seatType=data.tipSedista;
+				$("#nejm").empty();
+				$("#nejm").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.naziv+"\" required type=\"text\" id=\"naziv\" name=\"naziv\">");
+				if(data.jeZatvoreno){
+					$("#klozd").empty();
+					$("#klozd").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" checked=checked required type=\"checkbox\" id=\"jeZatvoreno\" name=\"jeZatvoreno\" value=\"true\">");
+				}
+				else{
+					$("#klozd").empty();
+					$("#klozd").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" required type=\"checkbox\" id=\"jeZatvoreno\" name=\"jeZatvoreno\" value=\"true\">");
+				}
+				$("#redov").empty();
+				$("#redov").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.redovi+"\" required type=\"text\" id=\"redovi\" name=\"redovi\">");
+				$("#kolon").empty();
+				$("#kolon").append("<input style=\"margin-left:10px;margin-right:5px;width:98%;\" value=\""+data.kolone+"\" required type=\"text\" id=\"kolone\" name=\"kolone\">");
+				$("#sediste").empty();
+				$("#sediste").append("<select style=\"height:33px;margin-left:10px;margin-right:5px;width:60%;\" required id=\"tipSedista\" name=\"tipSedista\"><option></option>");
+			}else{
+						
+			}
+			},error:function(jqxhr,textStatus,errorThrown){
+				alert(errorThrown);
+			}
+	});
 	
 	$.ajax({
 		url:"/tipoviSedista",
@@ -45,9 +77,16 @@ window.onload = function(){
 		dataType:"json",
 		success:function(data){
 			if(data!=null){
+				console.log(data);
+				console.log(seatType);
 				$.each(data,function(index,value){
-					$("#tipSedista").append("<option>"+value+"</option>");
-					
+					if(value==seatType){
+						$("#tipSedista").append("<option selected=\"selected\">"+value+"</option>");
+					}
+					else{
+						$("#tipSedista").append("<option>"+value+"</option>");
+						
+					}
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
@@ -55,6 +94,8 @@ window.onload = function(){
 		}
 		
 	});
+	
+	
 }
 
 function logOutUser(){
