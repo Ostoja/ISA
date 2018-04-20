@@ -16,7 +16,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -32,7 +32,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 	$.ajax({
@@ -48,7 +48,7 @@ window.onload = function(){
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -69,7 +69,7 @@ function checkAuthorize(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 }
@@ -98,7 +98,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -120,7 +120,7 @@ function updateForm(){
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -129,7 +129,7 @@ function updateForm(){
 function updateFormSeg(){
 	var id = $("#segmentUsali").text
 	console.log(id);
-	alert(id);
+	//alert(id);
 	$.ajax({
 		url:"/mestaseg/"+id,
 		type:"GET",
@@ -143,7 +143,7 @@ function updateFormSeg(){
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -180,7 +180,7 @@ function napraviNovuKartu(){
 				}
 			
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 }

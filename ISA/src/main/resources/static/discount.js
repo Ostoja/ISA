@@ -1,6 +1,6 @@
 window.onload = function(){
 	var isprazniRepertoar=$("#seat").empty();
-	alert('AaA');
+	//alert('AaA');
 	$.ajax({
 		url:"/returnRoleUser",
 		type:"GET",
@@ -18,7 +18,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -34,7 +34,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 }
@@ -66,7 +66,7 @@ function dodaj(){
 				}
 			
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -86,7 +86,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});

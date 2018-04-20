@@ -104,7 +104,7 @@ function registerUser(){
 	    				}
 	    			
 	    		},error: function(jqxhr,textStatus,errorThrown){
-	    			alert(errorThrown);
+	    			//alert(errorThrown);
 	    		}
 	    	});
 	    	
@@ -128,7 +128,7 @@ function checkFirstTime(){
 				top.location.href="changepass.html";		
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 }
@@ -153,7 +153,7 @@ function logInUser(){
 				top.location.href="index.html";
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -174,7 +174,7 @@ function logInGuest(){
 				
 			}
 		},error:function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	

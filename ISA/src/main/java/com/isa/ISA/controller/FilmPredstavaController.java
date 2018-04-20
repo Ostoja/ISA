@@ -109,6 +109,9 @@ public class FilmPredstavaController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/fp")
 	public void updateFilmPredstava(@RequestBody FilmPredstavaDTO fp, HttpServletRequest request) {
 		Long id = ((FilmPredstava)request.getSession().getAttribute("film")).getId();
+		FilmPredstava fp2 = fpr.getOne(id);
+		fp.setBrojOcena(fp.getBrojOcena());
+		fp.setProsecnaOcena(fp2.getProsecnaOcena());
 		fps.updateFilmPredstava(fp, id);
 	}
 

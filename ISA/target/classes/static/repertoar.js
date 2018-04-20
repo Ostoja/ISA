@@ -1,6 +1,6 @@
 window.onload = function(){
 	var isprazniRepertoar=$("#repertoar").empty();
-	//alert('AaA');
+	////alert('AaA');
 	$.ajax({
 		url:"/returnRoleUser",
 		type:"GET",
@@ -18,7 +18,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -34,7 +34,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 	$.ajax({
@@ -49,7 +49,7 @@ window.onload = function(){
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 }
@@ -73,7 +73,7 @@ function film(id){
 				window.location.replace("event.html"); //event.html
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -88,7 +88,7 @@ function ticket(id){
 				window.location.replace("segmentticket.html");
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -108,7 +108,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -124,7 +124,7 @@ function editProj(id){
 				window.location.replace("projedit.html");
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});

@@ -18,7 +18,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -34,7 +34,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 	$.ajax({
@@ -44,20 +44,20 @@ window.onload = function(){
 		dataType:"json",
 		success:function(data){
 			if(data!=null){
-				alert(data);
+				//alert(data);
 				$.each(data,function(index,pbioskop){
 						napraviPBioskop(index,pbioskop);
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 }
 
 function napraviPBioskop(index,pbioskop){
 	var divPBioskopi=$("#bioskopi");
-	alert(pbioskop);
+	//alert(pbioskop);
 	divPBioskopi.append("<div class=\"panel-heading\" style=\"background-color:lightsteelblue\"  id=\"naziv\"><label style=\"font-weight:bold;font-size: 17px;margin-right:5px;\">Name of cinema: </label><a style=\"color:white\" onclick=\"otvoriBioskop("+pbioskop+")\">"+pbioskop.naziv+"</a><button style=\"float: right; margin-right:10px;\" onclick=\"otvoriSale("+pbioskop.id+")\"  class=\"btn btn-info\" float=\"right\" ><span class=\"glyphicon glyphicon-ok-sign\"></span> Halls</button><button style=\"float: right; margin-right:10px;\" onclick=\"repertoar("+pbioskop.id+")\"  class=\"btn btn-danger\" float=\"right\" ><span class=\"glyphicon glyphicon-remove\"></span> Repertoire</button><button class=\"btn btn-success\" style=\"margin-right:10px; margin-left:10px;\" onclick=\"karta("+pbioskop.id+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-open\"></span> Tickets</button><button style=\"margin-right:10px; \" class=\"btn btn-warning\" onclick=\"otpratiPodforum("+index+")\"float=\"right\"><span class=\"glyphicon glyphicon-eye-close\"></span> UNFOLLOW</button><button class=\"btn btn-info\"  onclick=\"napisiZalbu("+index+")\"><span class=\"glyphicon glyphicon-list-alt\"></span> Write complaint</button></div>");
 	divPBioskopi.append("<div class=\"panel-footer\" id=\"adresa\"><label style=\"font-weight:bold;margin-right:5px;\">Address: </label>"+pbioskop.adresa +"</div>");
 	divPBioskopi.append("<div class=\"panel-footer\" id=\"promotivniOpis\"><label style=\"font-weight:bold;margin-right:5px;\">Description: </label>"+pbioskop.promotivniOpis +"</div>");
@@ -65,7 +65,7 @@ function napraviPBioskop(index,pbioskop){
 }
 
 function repertoar(id){
-	alert(id)
+	//alert(id)
 	$.ajax({
 		url:"/projekcije/"+id,
 		type:"GET",
@@ -74,14 +74,14 @@ function repertoar(id){
 				window.location.replace("repertoar.html"); //repertoire.html
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert('Greska');
+			//alert('Greska');
 		}
 		
 	});
 }
 
 function karta(id){
-	alert(id)
+	//alert(id)
 	$.ajax({
 		url:"/projekcije/"+id,
 		type:"GET",
@@ -90,7 +90,7 @@ function karta(id){
 				window.location.replace("karta.html"); //ticket.html
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert('Greska');
+			//alert('Greska');
 		}
 		
 	});
@@ -110,7 +110,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -118,7 +118,7 @@ function logOutUser(){
 }
 
 function otvoriSale(id){
-	alert(id)
+	//alert(id)
 	$.ajax({
 		url:"/projekcije/"+id,
 		type:"GET",
@@ -127,7 +127,7 @@ function otvoriSale(id){
 				window.location.replace("sala.html"); //halls.html
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert('Greska');
+			//alert('Greska');
 		}
 		
 	});

@@ -11,7 +11,7 @@ public class FilmPredstavaDTO {
 
 	private String reditelj;
 
-	private float prosecnaOcena;
+	private double prosecnaOcena;
 
 	private int brojOcena; 
 	
@@ -53,12 +53,12 @@ public class FilmPredstavaDTO {
 		this.opis = opis;
 	}
 
-	public float getProsecnaOcena() {
+	public double getProsecnaOcena() {
 		return prosecnaOcena;
 	}
 
-	public void setProsecnaOcena(float prosecnaOcena) {
-		this.prosecnaOcena = prosecnaOcena;
+	public void setProsecnaOcena(double d) {
+		this.prosecnaOcena = d;
 	}
 
 	public int getBrojOcena() {

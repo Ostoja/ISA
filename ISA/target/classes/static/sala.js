@@ -1,6 +1,6 @@
 window.onload = function(){
 	var isprazniRepertoar=$("#hall").empty();
-	alert('hala');
+	//alert('hala');
 	$.ajax({
 		url:"/returnRoleUser",
 		type:"GET",
@@ -18,7 +18,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -35,7 +35,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 	$.ajax({
@@ -50,7 +50,7 @@ window.onload = function(){
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 }
@@ -71,7 +71,7 @@ function segmenti(id){
 				window.location.replace("segments.html"); //segment.html
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -91,7 +91,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -107,7 +107,7 @@ function editujHalu(id){
 				window.location.replace("halledit.html");
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});

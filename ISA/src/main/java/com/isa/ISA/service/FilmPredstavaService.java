@@ -71,9 +71,12 @@ public class FilmPredstavaService {
 
 	}
 
-	public void addFilmPredstava1(FilmPredstava fp) {
-		if (check(fp))
+	public FilmPredstava addFilmPredstava1(FilmPredstava fp) {
+		if (check(fp)) {
 			fpr.save(fp);
+			return fp;
+		}
+		return null;
 	}
 
 	public void addFilmPredstava(FilmPredstavaDTO fp2) {

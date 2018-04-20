@@ -129,19 +129,7 @@ public class RezervacijaController {
 			return;
 		}
 		Korisnik ko = kor.getOne(u.getId());
-		Karta k = kartaRepo.getOne(idl);
-		if(k.isIzvrsena()) {
-			return;
-		}
-		k.setIzvrsena(true);
-		kartaRepo.save(k);
-		Rezervacija re = new Rezervacija();
-		re.setJePotvrdjena(false);
-		re.setKarta(k);
-		re.setMesto(k.getMesto());
-		re.setProjekcija(k.getProjekcija());
-		re.setRezervisao(ko);
-		rr.save(re);
+		rService.rezervisi(ko, idl);
 		System.out.println("AAAA "+rr.findAll().size());
 		/*
 		r.setBroj(k.getMesto().getBroj());

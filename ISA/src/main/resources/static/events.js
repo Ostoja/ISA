@@ -1,6 +1,6 @@
 window.onload = function(){
 	var isprazniRepertoar=$("#movie").empty();
-	alert('AbA');
+	//alert('AbA');
 	$.ajax({
 		url:"/returnRoleUser",
 		type:"GET",
@@ -18,7 +18,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -34,7 +34,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 	$.ajax({
@@ -49,7 +49,7 @@ window.onload = function(){
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 }
@@ -76,7 +76,7 @@ function deletuj(id){
 				window.location.replace("events.html");
 			
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -90,7 +90,7 @@ function edituj(id){
 				window.location.replace("eventedit.html");
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -110,7 +110,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});

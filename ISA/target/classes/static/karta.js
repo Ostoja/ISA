@@ -1,6 +1,6 @@
 window.onload = function(){
 	var isprazniRepertoar=$("#karta").empty();
-	alert('AaA');
+	//alert('AaA');
 	$.ajax({
 		url:"/returnRoleUser",
 		type:"GET",
@@ -18,7 +18,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -34,7 +34,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 	$.ajax({
@@ -50,7 +50,7 @@ window.onload = function(){
 				});
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 			console.log(data);
 		}
 	});
@@ -68,6 +68,8 @@ function napraviRepertoar(index,repertoar){
 	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Type of seat: </label>"+repertoar.tip +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"mesto\"><label style=\"font-weight:bold;margin-right:5px;\">Original price: </label>"+repertoar.punaCena +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Discount: </label>"+repertoar.popust +"</div>");}
+	divRepertoar.append("<div class=\"panel-footer\" id=\"mesto\"><label style=\"font-weight:bold;margin-right:5px;\">Date: </label>"+repertoar.vremeOdrzavanja +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Time: </label>"+repertoar.termin +"</div>");
 
 function logOutUser(){
 	$.ajax({
@@ -82,7 +84,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -98,7 +100,7 @@ function rezervisi(id){
 				window.location.replace("profile.html");
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -113,7 +115,7 @@ function film(id){
 				window.location.replace("event.html");
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -128,7 +130,7 @@ function editProj(id){
 				window.location.replace("projedit.html");
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});

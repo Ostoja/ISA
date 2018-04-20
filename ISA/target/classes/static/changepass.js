@@ -17,7 +17,7 @@ window.onload = function(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 	});
 	
@@ -33,7 +33,7 @@ window.onload = function(){
 						
 			}
 			},error:function(jqxhr,textStatus,errorThrown){
-				alert(errorThrown);
+				//alert(errorThrown);
 			}
 	});
 }
@@ -61,7 +61,7 @@ function logOutUser(){
 				
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
-			alert(errorThrown);
+			//alert(errorThrown);
 		}
 		
 	});
@@ -100,7 +100,7 @@ function registerUser(){
 	    				}
 	    			
 	    		},error: function(jqxhr,textStatus,errorThrown){
-	    			alert(errorThrown);
+	    			//alert(errorThrown);
 	    		}
 	    	});
 	    	

@@ -68,6 +68,9 @@ function napraviRepertoar(index,repertoar){
 	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Type of seat: </label>"+repertoar.tip +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"mesto\"><label style=\"font-weight:bold;margin-right:5px;\">Original price: </label>"+repertoar.punaCena +"</div>");
 	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Discount: </label>"+repertoar.popust +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"mesto\"><label style=\"font-weight:bold;margin-right:5px;\">Date: </label>"+repertoar.vremeOdrzavanja +"</div>");
+	divRepertoar.append("<div class=\"panel-footer\" id=\"sala\"><label style=\"font-weight:bold;margin-right:5px;\">Time: </label>"+repertoar.termin +"</div>");
+
 }
 
 function logOutUser(){
