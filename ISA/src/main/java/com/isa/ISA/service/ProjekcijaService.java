@@ -16,6 +16,7 @@ import com.isa.ISA.model.Projekcija;
 import com.isa.ISA.model.Sala;
 import com.isa.ISA.model.DTO.ProjekcijaDTO;
 import com.isa.ISA.repository.FilmPredstavaRepository;
+import com.isa.ISA.repository.KartaRepository;
 import com.isa.ISA.repository.PozoristeBioskopRepository;
 import com.isa.ISA.repository.ProjekcijaRepository;
 import com.isa.ISA.repository.SalaRepository;
@@ -32,6 +33,9 @@ public class ProjekcijaService {
 	@Autowired
 	private FilmPredstavaRepository fpr;
 
+	@Autowired
+	private KartaRepository kr;
+	
 	@Autowired
 	private SalaRepository sr;
 
@@ -56,6 +60,9 @@ public class ProjekcijaService {
 	}
 
 	public void updateProjekcija(Projekcija p) {
+		if(kr.findByProjekcija(p).size()!=0) {
+			return;
+		}
 		pr.save(p);
 	}
 

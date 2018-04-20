@@ -54,20 +54,25 @@ public class LoginController {
 	@RequestMapping(value = "/returnAdmin1")
 	public boolean returnModerOrAdminFstTime(HttpServletRequest request) {
 		if (request.getSession().getAttribute("loggedUser") == null) {
+			System.out.println("Nije ulogovan");
 			return false;
 		}
 		if (((User) request.getSession().getAttribute("loggedUser")).getTip().equals(TipKorisnika.AdminBioPoz)) {
-			// System.out.println("jetseee");
+			System.out.println("jetseee");
 			User u = (User) request.getSession().getAttribute("loggedUser");
 			Admin a = as.getAdmin(u.getUsername());
+			
 			if (a.getJeAktivan()) {
+				System.out.println("ulogovan i aktivan");
 				return true;
 			} 
 			else {
+				System.out.println("ulogovan i neaktivan");
 				return false;
 			}
 		} 
 		else {
+			System.out.println("ulogovan");
 			return true;
 		}
 	}

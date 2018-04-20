@@ -150,7 +150,6 @@ function logInUser(){
 				
 			}else{
 				checkFirstTime();
-				top.location.href="index.html";
 			}
 		},error: function(jqxhr,textStatus,errorThrown){
 			//alert(errorThrown);

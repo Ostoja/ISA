@@ -15,4 +15,5 @@ public interface KartaRepository extends JpaRepository<Karta, Long> {
 	List<Karta> findByPozoristeBioskopAndVremeOdrzavanjaAfter(PozoristeBioskop pb, Date pocetak);
 	List<Karta> findByPozoristeBioskopAndVremeOdrzavanjaBefore(PozoristeBioskop pb, Date kraj);
 	List<Karta> findByProjekcijaAndMesto(Projekcija pr, Mesto me);
+	List<Projekcija> findByProjekcija(Projekcija pr);
 }
