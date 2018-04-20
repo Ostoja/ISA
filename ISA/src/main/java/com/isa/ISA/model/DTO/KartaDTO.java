@@ -1,5 +1,6 @@
 package com.isa.ISA.model.DTO;
 
+import com.isa.ISA.model.TipSedista;
 
 /**
  * prenosi mesto, segmentUsali, projekciju i popust*/
@@ -25,6 +26,16 @@ public class KartaDTO {
 	private long segmentUsali;
 	
 	private String sala;
+	
+	private String pb;
+	
+	private String seg;
+	
+	private int mes;
+	
+	private String film;
+	
+	private TipSedista tip;
 	
 	public KartaDTO() {
 		
@@ -104,10 +115,11 @@ public class KartaDTO {
 
 	@Override
 	public String toString() {
-		return "KartaDTO [mesto=" + mesto + ", rezervacija=" + rezervacija + ", projekcija=" + projekcija
+		return "KartaDTO [id=" + id + ", mesto=" + mesto + ", rezervacija=" + rezervacija + ", projekcija=" + projekcija
 				+ ", pozoristeBioskop=" + pozoristeBioskop + ", vremeOdrzavanja=" + vremeOdrzavanja + ", termin="
 				+ termin + ", punaCena=" + punaCena + ", popust=" + popust + ", segmentUsali=" + segmentUsali
-				+ ", sala=" + sala + "]";
+				+ ", sala=" + sala + ", pb=" + pb + ", seg=" + seg + ", mes=" + mes + ", film=" + film + ", tip=" + tip
+				+ "]";
 	}
 
 	public String getSala() {
@@ -124,6 +136,46 @@ public class KartaDTO {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getPb() {
+		return pb;
+	}
+
+	public void setPb(String pb) {
+		this.pb = pb;
+	}
+
+	public String getSeg() {
+		return seg;
+	}
+
+	public void setSeg(String seg) {
+		this.seg = seg;
+	}
+
+	public int getMes() {
+		return mes;
+	}
+
+	public void setMes(int mes) {
+		this.mes = mes;
+	}
+
+	public String getFilm() {
+		return film;
+	}
+
+	public void setFilm(String film) {
+		this.film = film;
+	}
+
+	public TipSedista getTip() {
+		return tip;
+	}
+
+	public void setTip(TipSedista tip) {
+		this.tip = tip;
 	}
 	
 	

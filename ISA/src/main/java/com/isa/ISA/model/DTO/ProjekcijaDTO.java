@@ -10,6 +10,7 @@ import com.isa.ISA.CustomerDateAndTimeDeserialize;
 
 
 public class ProjekcijaDTO {
+	private long id;
 	private String datum;
 	
 	private String termin;
@@ -19,6 +20,12 @@ public class ProjekcijaDTO {
 	private Long filmPredstava;
 	
     private Long sala;
+    
+    private String naziv;
+    
+    private int brMesta;
+    
+    private String sName;
 
 	public String getDatum() {
 		return datum;
@@ -65,4 +72,38 @@ public class ProjekcijaDTO {
 	public void setTermin(String termin) {
 		this.termin = termin;
 	}
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public int getBrMesta() {
+		return brMesta;
+	}
+
+	public void setBrMesta(int brMesta) {
+		this.brMesta = brMesta;
+	}
+
+	public String getsName() {
+		return sName;
+	}
+
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	
 }

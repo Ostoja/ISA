@@ -23,13 +23,18 @@ import com.isa.ISA.repository.FilmPredstavaRepository;
 import com.isa.ISA.repository.PozoristeBioskopRepository;
 import com.isa.ISA.repository.ProjekcijaRepository;
 import com.isa.ISA.repository.SalaRepository;
+import com.isa.ISA.repository.SegmentUSaliRepository;
 import com.isa.ISA.service.ProjekcijaService;
+import com.isa.ISA.service.SegmentUSaliService;
 
 @RestController
 public class ProjekcijaController {
 
 	@Autowired
 	private ProjekcijaService ps;
+	
+	@Autowired
+	private SegmentUSaliService suss;
 	
 	@Autowired
 	private PozoristeBioskopRepository pbr;
@@ -44,14 +49,27 @@ public class ProjekcijaController {
 	private SalaRepository sr;
 	
 	@RequestMapping("/projekcije")
-    private List<Projekcija> getAllProjekcija(HttpServletRequest request){
+    private List<ProjekcijaDTO> getAllProjekcija(HttpServletRequest request){
 		PozoristeBioskop pb = (PozoristeBioskop) request.getSession().getAttribute("pozbio");
+		List<ProjekcijaDTO> lpdto = new ArrayList<>();
 		System.out.println("Proj COnt, pb "+pb.getNaziv());
         List<Projekcija> allP = new ArrayList<>();
         ps.getAll().forEach(allP::add);
         PozoristeBioskop pbio = pbr.getOne(pb.getId());
         System.out.println("Proj Cont allP "+allP.size());
         List<Projekcija> temp = pbio.getRepertoar();
+        for(int i = 0; i<temp.size(); i++) {
+        	ProjekcijaDTO elm = new ProjekcijaDTO();
+        	elm.setCena(temp.get(i).getCena());
+        	SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+        	elm.setDatum(DATE_FORMAT.format(temp.get(i).getDatum()));
+        	elm.setTermin(temp.get(i).getTermin());
+        	elm.setsName(temp.get(i).getSala().getNaziv());
+        	elm.setId(temp.get(i).getId());
+        	elm.setNaziv(temp.get(i).getFilmPredstava().getNaziv());
+        	elm.setBrMesta(suss.getBrojMesta(temp.get(i).getSala(), temp.get(i)));
+        	lpdto.add(elm);
+        }
         /*for(int i = 0; i<allP.size(); i++) {
         	Sala sala = sr.getOne((allP.get(i).getSala().getId()));
         	//System.out.println("ProjCont projekcija: "+allP.get(i).getSala().getPozoristeBioskop().getNaziv());
@@ -59,7 +77,7 @@ public class ProjekcijaController {
         		temp.remove(allP.get(i));
         	}
         }*/
-        return temp;
+        return lpdto;
 	}
 
 	@RequestMapping("/filmsala/{id}")

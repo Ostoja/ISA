@@ -97,7 +97,7 @@ public class SegmentUSaliController {
         }
         return temp;
 	}
-	@RequestMapping("/seggment") //sve osim tipa, tip kasnije
+	@RequestMapping("/seggment") 
 	public SegmentUSaliDTO getSegmentEdit(HttpServletRequest request) {
 		SegmentUSali sus = (SegmentUSali) request.getSession().getAttribute("segment");
 		sus = susr.getOne(sus.getId());
@@ -146,7 +146,7 @@ public class SegmentUSaliController {
 		SegmentUSali pb = (SegmentUSali) request.getSession().getAttribute("segment");
 		s.setSala(susr.findOne(pb.getId()).getSala().getId());
 		System.out.println("SegCont + "+s.toString());
-		suss.addSala(s, pb.getId());
+		suss.editSala(s, pb.getId());
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/segment/edit/{id}")

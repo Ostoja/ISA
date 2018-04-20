@@ -95,11 +95,16 @@ public class KartaController {
 		k.setPopust(karta.getPopust());
 		k.setProjekcija(karta.getProjekcija().getId());
 		k.setTermin(karta.getTermin());
-		k.setSala(karta.getProjekcija().getSname());
+		k.setSala(karta.getMesto().getSegmentUSali().getSala().getNaziv());
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 		k.setVremeOdrzavanja(DATE_FORMAT.format(karta.getVremeOdrzavanja()));
 		k.setPunaCena(karta.getPunaCena());
 		k.setId(karta.getId());
+		k.setFilm(karta.getProjekcija().getFilmPredstava().getNaziv());
+		k.setMes(karta.getMesto().getBroj());
+		k.setSeg(karta.getMesto().getSegmentUSali().getNaziv());
+		k.setPb(karta.getPozoristeBioskop().getNaziv());
+		k.setTip(karta.getMesto().getTipSedista());
 		return k; // bilo je return null, wow
 	}
 
